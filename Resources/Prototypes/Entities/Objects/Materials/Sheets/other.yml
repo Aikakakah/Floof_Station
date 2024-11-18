@@ -112,10 +112,12 @@
     - Sheet
   - type: UserInterface
     interfaces:
-    - key: enum.ShortConstructionUiKey.Key
-      type: ShortConstructionMenuBUI
+      enum.RadialSelectorUiKey.Key:
+        type: RadialSelectorMenuBUI
   - type: ActivatableUI
-    key: enum.ShortConstructionUiKey.Key
+    key: enum.RadialSelectorUiKey.Key
+    inHandsOnly: true
+    requireActiveHand: false
   - type: ShortConstruction
     entries:
     - prototype: SheetPGlass
@@ -175,10 +177,12 @@
         canReact: false
   - type: UserInterface
     interfaces:
-    - key: enum.ShortConstructionUiKey.Key
-      type: ShortConstructionMenuBUI
+      enum.RadialSelectorUiKey.Key:
+        type: RadialSelectorMenuBUI
   - type: ActivatableUI
-    key: enum.ShortConstructionUiKey.Key
+    key: enum.RadialSelectorUiKey.Key
+    inHandsOnly: true
+    requireActiveHand: false
   - type: ShortConstruction
     entries:
     - prototype: CratePlastic
@@ -212,9 +216,6 @@
   suffix: Full
   components:
   - type: Material
-  - type: Food
-    transferAmount: 10
-  - type: BadFood
   - type: PhysicalComposition
     materialComposition:
       Uranium: 100
@@ -246,10 +247,12 @@
         canReact: false
   - type: UserInterface
     interfaces:
-    - key: enum.ShortConstructionUiKey.Key
-      type: ShortConstructionMenuBUI
+      enum.RadialSelectorUiKey.Key:
+        type: RadialSelectorMenuBUI
   - type: ActivatableUI
-    key: enum.ShortConstructionUiKey.Key
+    key: enum.RadialSelectorUiKey.Key
+    inHandsOnly: true
+    requireActiveHand: false
   - type: ShortConstruction
     entries:
     - prototype: SheetUGlass
