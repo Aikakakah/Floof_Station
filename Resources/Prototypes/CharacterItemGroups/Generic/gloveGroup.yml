@@ -15,6 +15,20 @@
     id: LoadoutHandsGlovesFingerless
   - type: loadout
     id: LoadoutGoldRing
+  - type: loadout
+    id: LoadoutHandsColorWhite
+  - type: loadout
+    id: LoadoutHandsColorYellowBudget
+  - type: loadout
+    id: LoadoutHandsGlovesLeather
+  - type: loadout
+    id: LoadoutHandsGlovesPowerglove
+  - type: loadout
+    id: LoadoutHandsGlovesRobohands
+  - type: loadout
+    id: LoadoutHandsGlovesFingerlessWhite
+  - type: loadout
+    id: LoadoutHandsGlovesEvening
   # start Floof
   - type: loadout
     id: LoadoutHandsColorPurple
@@ -49,3 +63,4 @@
   - type: loadout
     id: LoadoutClothingHandsBeeWarmers
   # end Floof
+

@@ -82,3 +82,14 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: LoadoutRing  # Floof change
+
+  id: LoadoutHandsGlovesEvening
+  category: Hands
+  cost: 0
+  exclusive: true
+  customColorTint: true
+  items:
+    - ClothingHandsGlovesEvening
+  requirements:
+    - !type:CharacterItemGroupRequirement
+      group: LoadoutGloves
