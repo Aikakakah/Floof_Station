@@ -82,6 +82,7 @@
     tags:
     - HamsterWearable
     - WhitelistChameleon
+    - GlassesNearsight
 
 - type: entity
   parent: ClothingEyesBase
@@ -179,6 +180,27 @@
     coverage: EYES
 
 - type: entity
+  parent: [ClothingEyesBase]
+  id: ClothingEyesGlassesCommand
+  name: administration glasses
+  description: Upgraded sunglasses that provide flash immunity and show ID card status.
+  components:
+  - type: Sprite
+    sprite: Clothing/Eyes/Glasses/commandglasses.rsi
+  - type: Clothing
+    sprite: Clothing/Eyes/Glasses/commandglasses.rsi
+  - type: FlashImmunity
+  - type: EyeProtection
+    protectionTime: 5
+  - type: Tag
+    tags:
+    - HamsterWearable
+    - WhitelistChameleon
+  - type: IdentityBlocker
+    coverage: EYES
+  - type: ShowJobIcons
+
+- type: entity
   parent: ClothingEyesBase
   id: ClothingEyesGlassesMercenary
   name: mercenary glasses
@@ -232,6 +254,7 @@
   - type: Clothing
     sprite: Clothing/Eyes/Glasses/ninjavisor.rsi
   - type: FlashImmunity
+  - type: NightVision
 
 - type: entity #Fake goggles, the latest in anti-valid hunting technology
   parent: ClothingEyesBase

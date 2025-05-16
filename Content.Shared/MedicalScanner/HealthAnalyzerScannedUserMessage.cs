@@ -1,3 +1,4 @@
+using Content.Shared._Shitmed.Targeting; // Shitmed Change
 using Robust.Shared.Serialization;
 
 namespace Content.Shared.MedicalScanner;
@@ -9,18 +10,35 @@ namespace Content.Shared.MedicalScanner;
 public sealed class HealthAnalyzerScannedUserMessage : BoundUserInterfaceMessage
 {
     public readonly NetEntity? TargetEntity;
+    public float Mass; // Floof: Health scanners show body mass
     public float Temperature;
     public float BloodLevel;
     public bool? ScanMode;
     public bool? Bleeding;
+    public bool? Unrevivable;
+    public Dictionary<TargetBodyPart, TargetIntegrity>? Body; // Shitmed Change
+    public NetEntity? Part; // Shitmed Change
 
-    public HealthAnalyzerScannedUserMessage(NetEntity? targetEntity, float temperature, float bloodLevel, bool? scanMode, bool? bleeding)
+    public HealthAnalyzerScannedUserMessage(NetEntity? targetEntity, float mass,  float temperature, float bloodLevel, bool? scanMode, bool? bleeding, bool? unrevivable, Dictionary<TargetBodyPart, TargetIntegrity>? body, NetEntity? part = null)
     {
         TargetEntity = targetEntity;
+        Mass = mass; // Floof: Health scanners show body mass
         Temperature = temperature;
         BloodLevel = bloodLevel;
         ScanMode = scanMode;
         Bleeding = bleeding;
+        Body = body; // Shitmed Change
+        Part = part; // Shitmed Change
+        Unrevivable = unrevivable;
     }
 }
 
+// Shitmed Change Start
+[Serializable, NetSerializable]
+public sealed class HealthAnalyzerPartMessage(NetEntity? owner, TargetBodyPart? bodyPart) : BoundUserInterfaceMessage
+{
+    public readonly NetEntity? Owner = owner;
+    public readonly TargetBodyPart? BodyPart = bodyPart;
+
+}
+// Shitmed Change End

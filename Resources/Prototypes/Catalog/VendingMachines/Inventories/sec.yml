@@ -16,6 +16,7 @@
     ClothingBeltSecurityWebbing: 5
     CombatKnife: 3
     Zipties: 12
+    BolaEnergy: 6
     RiotShield: 2
     RiotLaserShield: 2
     RiotBulletShield: 2
@@ -28,6 +29,7 @@
     BreachingCharge: 8
     ClothingLongcoatSec: 2 # Floofstation
   # security officers need to follow a diet regimen!
+    HyperlinkBookSpaceLaw: 4 # Floof - M3739 - Thank me later.
   contrabandInventory:
     FoodDonutHomer: 12
     FoodBoxDonut: 2

@@ -4,8 +4,11 @@ job-name-cadet = Security Cadet
 job-name-hos = Head of Security
 job-name-detective = Detective
 job-name-brigmedic = Corpsman
+job-name-senior-officer = Senior Officer
 job-name-borg = Cyborg
 job-name-senior-researcher = Mystic
+job-name-senior-engineer = Senior Engineer
+job-name-senior-physician = Senior Physician
 job-name-scientist = Acolyte
 job-name-research-assistant = Noviciate
 job-name-rd = Mystagogue
@@ -36,6 +39,7 @@ job-name-botanist = Botanist
 job-name-bartender = Bartender
 job-name-passenger = Passenger
 job-name-salvagespec = Salvage specialist
+job-name-station-ai = Station AI
 job-name-qm = Logistics Officer
 job-name-cargotech = Cargo Technician
 job-name-chef = Chef
@@ -49,6 +53,22 @@ job-name-ertjanitor = ERT Janitor
 job-name-boxer = Boxer
 job-name-zookeeper = Zookeeper
 job-name-visitor = Visitor
+
+# unused jobs
+# these are required for the agent ID job icon tooltips
+# I am keeping them for roleplaying opportunities
+job-name-geneticist = Geneticist
+job-name-no-id = No ID
+job-name-prisoner = Prisoner
+job-name-syndicate = Syndicate
+job-name-unknown = Unknown
+job-name-virologist = Virologist
+job-name-zombie = Zombie
+
+# Job titles
+job-title-visitor = Visitor
+job-title-cluwne = Cluwne
+job-title-universal = Universal
 
 # Role timers - Make these alphabetical or I cut you
 JobAtmosphericTechnician = Atmospheric Technician
@@ -99,6 +119,7 @@ JobSeniorOfficer = Senior Officer
 JobSeniorPhysician = Senior Physician
 JobSeniorResearcher = Mystic
 JobServiceWorker = Service Worker
+JobStationAi = Station AI
 JobStationEngineer = Station Engineer
 JobTechnicalAssistant = Technical Assistant
 JobVisitor = Visitor

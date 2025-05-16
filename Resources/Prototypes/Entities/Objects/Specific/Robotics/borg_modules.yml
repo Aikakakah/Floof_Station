@@ -32,7 +32,7 @@
   id: ActionBorgSwapModule
   name: Swap Module
   description: Select this module, enabling you to use the tools it provides.
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: InstantAction
     itemIconStyle: BigItem
@@ -236,7 +236,8 @@
     - state: icon-pka
   - type: ItemBorgModule
     items:
-    - WeaponProtoKineticAccelerator
+    - WeaponProtoKineticAcceleratorborg #Floof
+    - SurvivalKnife # floof they are salavaging they should be able to cut a fish
 
 - type: entity
   id: BorgModuleGrapplingGun
@@ -344,7 +345,8 @@
     items:
     - AdvMopItem
     - HoloprojectorBorg
-    - SprayBottleSpaceCleaner
+    - MegaSprayBottleSpaceCleaner
+    - WeaponLauncherCleanadeBorg
     - Dropper
     - TrashBag
 

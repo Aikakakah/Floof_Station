@@ -62,13 +62,29 @@ language-Sign-name = Tau-Ceti Basic Sign Language
 language-Sign-description = TCB-SL for short, this sign language is prevalent among mute and deaf people.
 
 language-Marish-name = Marish
-language-Marish-description = An Language that can be used to speak in Empathy, Sharing eachother emotions with only one word, Shadowkins speaks this language with ease, tho its is nearly impossible to replicate it or learn it.
+language-Marish-description =  An inherently empathetic language, conveying emotions with a single word; spoken effortlessly by Shadowkins, though nearly impossible to learn or replicate.
 
 language-ValyrianStandard-name = Valyrian Standard
 language-ValyrianStandard-description =
     A language descended from eastern european languages of old earth - Valyrian Standard is the commonly spoken tongue of Harpies brought up on their homeworld of Valyrian 4b
     It is rarely spoken outside of the worlds of its native speakers, and has in modern times been supplanted by the 'Conlangs of the Sol Alliance.
     Its speakers are those who wish to uphold the traditions and beliefs of ancient peoples from before the colonial era.
+
+language-Chittin-name = Chittin
+language-Chittin-description =
+    A language consisting of clicks, buzzes, and some variety of harsh insect sounds.
+    Most of what makes up their speech comes from their antennae, making it a near-impossible language for those without to learn.
+
+language-Nehina-name = Nēhina
+language-Nehina-description =  A language spoken by the Feroxi, well adapted to speaking under the waters of ocean planets.
+
+language-Kagebun-name = Kagebun
+language-Kagebun-description = 
+    An ancient language primarily used by the yōkai, originating from their supernatural roots. 
+    To the uninitiated, it is a chorus of sounds ranging from eerie whispers to ritualistic chanting.
+    To those who speak it, it is a living tongue that links them to the spirit world and their ancient pacts.
+
+# Animal Languages
 
 language-Cat-name = Cat
 language-Cat-description = Meow
@@ -83,7 +99,7 @@ language-Xeno-name = Xeno
 language-Xeno-description = Sssss!
 
 language-Monkey-name = Monkey
-language-Monkey-description = oooook!
+language-Monkey-description = Oooook!
 
 language-Mouse-name = Mouse
 language-Mouse-description = Squeeek!
@@ -115,8 +131,18 @@ language-Kobold-description = Hiss!
 language-Hissing-name = Hissing
 language-Hissing-description = Hiss!
 
+# Floof section begin
 language-ScugSign-name = ScugSign
 language-ScugSign-description = Wawa! The secret ScugSign making you able to understand your fellows scug!
 
 language-Arachnic-name = Arachnic
 language-Arachnic-description = The language of arachnids is composed of mostly clicks and hisses, it almost has a rhythmic character to it at times.
+
+language-Penguin-name = Penguin
+language-Penguin-description = Wank!
+# Floof section end
+
+language-Eldritch-name = Eldritch
+language-Eldritch-description =
+    A language that is considered to be long forgotten - now the only speakers of this profaned tongue of screeches and
+    mumbles are the followers of an ancient God of Blood.

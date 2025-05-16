@@ -4,6 +4,8 @@
   parent: [BaseMob, MobDamageable, MobCombat, MobAtmosExposed, MobFlammable]
   abstract: true
   components:
+    - type: Vore # Floofstation - Vore
+      canVore: true
     - type: ContentEye
     - type: CameraRecoil
     - type: Reactive
@@ -25,6 +27,9 @@
     - type: Damageable
       damageContainer: Silicon
       damageModifierSet: IPC
+    - type: DamageForceSay # Floofstation
+      forceSayStringPrefix: damage-force-say-IPC-
+      forceSayStringCount: 7
     - type: InteractionOutline
     - type: MovementSpeedModifier
       baseWalkSpeed: 4
@@ -79,7 +84,7 @@
         - trigger: !type:DamageTrigger
             damage: 500
           behaviors:
-            - !type:GibBehavior {}
+            - !type:GibBehavior { }
     - type: Icon
       sprite: Mobs/Species/IPC/parts.rsi
       state: full
@@ -91,6 +96,7 @@
         - map: ["enum.HumanoidVisualLayers.Head"]
         - map: ["enum.HumanoidVisualLayers.Snout"]
         - map: ["enum.HumanoidVisualLayers.Eyes"]
+        - map: ["enum.HumanoidVisualLayers.Face"]
         - map: ["enum.HumanoidVisualLayers.RArm"]
         - map: ["enum.HumanoidVisualLayers.LArm"]
         - map: ["enum.HumanoidVisualLayers.RLeg"]
@@ -199,14 +205,24 @@
     - type: CreamPied
     - type: Stripping
     - type: Strippable
+    - type: ComplexInteraction
+    - type: SurgeryTarget
+    - type: Targeting
     - type: UserInterface
       interfaces:
-        enum.VoiceMaskUIKey.Key:
-          type: VoiceMaskBoundUserInterface
         enum.HumanoidMarkingModifierKey.Key:
           type: HumanoidMarkingModifierBoundUserInterface
         enum.StrippingUiKey.Key:
           type: StrippableBoundUserInterface
+        enum.InstrumentUiKey.Key:
+          type: InstrumentBoundUserInterface
+          requireInputValidation: false
+        enum.RadialSelectorUiKey.Key:
+          type: RadialSelectorMenuBUI
+        enum.ListViewSelectorUiKey.Key:
+          type: ListViewSelectorBUI
+        enum.SurgeryUIKey.Key:
+          type: SurgeryBui
     - type: Emoting
     - type: Grammar
       attributes:
@@ -222,6 +238,7 @@
     - type: Body
       prototype: IPC
       requiredLegs: 2
+      thermalVisibility: false
     - type: Ensnareable
       sprite: Objects/Misc/ensnare.rsi
     - type: Speech

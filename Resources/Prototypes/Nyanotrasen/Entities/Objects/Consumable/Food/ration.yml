@@ -1,6 +1,6 @@
 # PSB, Prepacked Sustenance Bar. With variety.
 - type: entity
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   parent: FoodPacketTrash
   id: FoodPSBTrash
   name: psb wrapper
@@ -75,6 +75,7 @@
   - type: Tag
     tags:
     - Fruit # DeltaV - Allow anyone to eat it, hopefully
+    - ReptilianFood # DeltaV - Allows feroxi (shark people) to eat it
 
 - type: entity
   name: soy sustenance bar

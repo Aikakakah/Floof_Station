@@ -10,6 +10,8 @@
   - MachineUpgrading
   - AltarsGolemancy
   - ReverseEngineering
+  - GlimmerCreatures
+  - TraversalDistorter
 
 - type: guideEntry
   id: Technologies
@@ -68,3 +70,15 @@
   id: Cyborgs
   name: guide-entry-cyborgs
   text: "/ServerInfo/Guidebook/Science/Cyborgs.xml"
+  children:
+  - Quadborgs
+
+- type: guideEntry
+  id: Quadborgs
+  name: guide-entry-quadborgs
+  text: "/ServerInfo/Guidebook/Science/Quadborgs.xml"
+
+- type: guideEntry
+  id: GlimmerCreatures
+  name: guide-entry-glimmer-creatures
+  text: /ServerInfo/Guidebook/DeltaV/Epistemics/GlimmerCreatures.xml

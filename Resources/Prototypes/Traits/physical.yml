@@ -14,11 +14,14 @@
         - IPC
     - !type:CharacterTraitRequirement
       inverted: true
-      traits:
+      traits: # Floof - M3739 - #690
         - WillToDie
-  components:
-    - type: DeadModifier
-      deadThresholdModifier: 10
+        - Redshirt
+  functions:
+    - !type:TraitReplaceComponent
+      components:
+        - type: DeadModifier
+          deadThresholdModifier: 10
 
 - type: trait
   id: WillToDie
@@ -36,11 +39,14 @@
         - IPC
     - !type:CharacterTraitRequirement
       inverted: true
-      traits:
+      traits: # Floof - M3739 - #690
         - WillToLive
-  components:
-    - type: DeadModifier
-      deadThresholdModifier: -15
+        - Redshirt
+  functions:
+    - !type:TraitReplaceComponent
+      components:
+        - type: DeadModifier
+          deadThresholdModifier: -15
 
 - type: trait
   id: Tenacity
@@ -58,11 +64,15 @@
         - IPC
     - !type:CharacterTraitRequirement
       inverted: true
-      traits:
+      traits: # Floof - M3739 - #690
         - GlassJaw
-  components:
-    - type: CritModifier
-      critThresholdModifier: 5
+        - BrittleBoneDisease
+        - Redshirt
+  functions:
+    - !type:TraitReplaceComponent
+      components:
+        - type: CritModifier
+          critThresholdModifier: 5
 
 - type: trait
   id: GlassJaw
@@ -80,11 +90,15 @@
         - IPC
     - !type:CharacterTraitRequirement
       inverted: true
-      traits:
+      traits: # Floof - M3739 - #690
         - Tenacity
-  components:
-    - type: CritModifier
-      critThresholdModifier: -10
+        - BrittleBoneDisease
+        - Redshirt
+  functions:
+    - !type:TraitReplaceComponent
+      components:
+        - type: CritModifier
+          critThresholdModifier: -10
 
 - type: trait
   id: Vigor
@@ -106,9 +120,11 @@
       species:
         - Oni
         - IPC
-  components:
-    - type: StaminaCritModifier
-      critThresholdModifier: 10
+  functions:
+    - !type:TraitReplaceComponent
+      components:
+        - type: StaminaCritModifier
+          critThresholdModifier: 10
 
 - type: trait
   id: Lethargy
@@ -129,9 +145,11 @@
       inverted: true
       species:
         - Felinid
-  components:
-    - type: StaminaCritModifier
-      critThresholdModifier: -15
+  functions:
+    - !type:TraitReplaceComponent
+      components:
+        - type: StaminaCritModifier
+          critThresholdModifier: -15
 
 - type: trait
   id: HighAdrenaline
@@ -151,10 +169,12 @@
       inverted: true
       traits:
         - AdrenalDysfunction
-  components:
-    - type: Adrenaline
-      rangeModifier: 0.4
-      inverse: true
+  functions:
+    - !type:TraitReplaceComponent
+      components:
+        - type: Adrenaline
+          rangeModifier: 0.4
+          inverse: true
 
 - type: trait
   id: AdrenalDysfunction
@@ -174,9 +194,11 @@
       inverted: true
       traits:
         - HighAdrenaline
-  components:
-    - type: Adrenaline
-      rangeModifier: 0.8
+  functions:
+    - !type:TraitReplaceComponent
+      components:
+        - type: Adrenaline
+          rangeModifier: 0.8
 
 - type: trait
   id: Masochism
@@ -192,10 +214,12 @@
       inverted: true
       traits:
         - LowPainTolerance
-  components:
-    - type: PainTolerance
-      rangeModifier: 0.4
-      inverse: true
+  functions:
+    - !type:TraitReplaceComponent
+      components:
+        - type: PainTolerance
+          rangeModifier: 0.4
+          inverse: true
 
 - type: trait
   id: LowPainTolerance
@@ -211,28 +235,82 @@
       inverted: true
       traits:
         - Masochism
-  components:
-    - type: PainTolerance
-      rangeModifier: 0.6
+  functions:
+    - !type:TraitReplaceComponent
+      components:
+        - type: PainTolerance
+          rangeModifier: 0.6
+
+- type: trait
+  id: Steadfast
+  category: Physical
+  points: -4
+  requirements:
+    - !type:CharacterJobRequirement
+      inverted: true
+      jobs:
+        - Borg
+        - MedicalBorg
+    - !type:CharacterSpeciesRequirement
+      inverted: true
+      species:
+        - Felinid
+    - !type:CharacterTraitRequirement
+      inverted: true
+      traits:
+        - Feeble
+  functions:
+    - !type:TraitModifySlowOnDamage
+      damageThresholdsModifier: 10
+      speedModifierMultiplier: 0.68
+
+- type: trait
+  id: Feeble
+  category: Physical
+  points: 3
+  requirements:
+    - !type:CharacterJobRequirement
+      inverted: true
+      jobs:
+        - Borg
+        - MedicalBorg
+    - !type:CharacterSpeciesRequirement
+      inverted: true
+      species:
+        - Felinid
+    - !type:CharacterTraitRequirement
+      inverted: true
+      traits:
+        - Steadfast
+  functions:
+    - !type:TraitModifySlowOnDamage
+      damageThresholdsModifier: -15
+      speedModifierMultiplier: 1.2
 
 - type: trait
   id: MartialArtist
   category: Physical
   points: -3
   requirements:
+  - !type:CharacterSpeciesRequirement
+    inverted: true
+    species:
+      - Feroxi # Floof - Throwing hands? Nah, they are biting you.
   - !type:CharacterJobRequirement
     inverted: true
     jobs:
       - Borg
       - MedicalBorg
       - Boxer
-  components:
-    - type: Boxer
-      modifiers:
-        coefficients:
-          Blunt: 1.5
-          Slash: 1.5
-          Piercing: 1.5
+  functions:
+    - !type:TraitReplaceComponent
+      components:
+        - type: Boxer
+          modifiers:
+            coefficients:
+              Blunt: 1.5
+              Slash: 1.5
+              Piercing: 1.5
 
 - type: trait
   id: Small
@@ -244,17 +322,25 @@
       species:
         - Felinid # Felinids already have this feature by default.
         - Rodentia # Floof - Rodentia
+        - Resomi # Floof - have this by default after porting Goob changes
+        - Kitsune # Floof - M3739 - #937 - Kitsune have this by default.
     - !type:CharacterHeightRequirement
       max: 150
     - !type:CharacterWidthRequirement
       max: 32
-  components:
-    - type: PseudoItem
-      storedOffset: 0,17
-      shape:
-        - 0,0,1,4
-        - 0,2,3,4
-        - 4,0,5,4
+    - !type:CharacterTraitRequirement
+      inverted: true
+      traits:
+        - Tiny # Floofstation
+  functions:
+    - !type:TraitAddComponent
+      components:
+        - type: PseudoItem
+          storedOffset: 0,17
+          shape:
+            - 0,0,1,4
+            - 0,2,3,4
+            - 4,0,5,4
 
 - type: trait
   id: TemperatureTolerance
@@ -265,9 +351,11 @@
       inverted: true
       species:
         - Vulpkanin # This trait functions exactly as-is for the Vulpkanin trait.
-  components:
-    - type: TemperatureProtection
-      coefficient: 0.1 # Enough resistance to walk into the chef's freezer, or tolerate daytime temperatures on Glacier without a jacket.
+  functions:
+    - !type:TraitReplaceComponent
+      components:
+        - type: TemperatureProtection
+          coefficient: 0.1 # Enough resistance to walk into the chef's freezer, or tolerate daytime temperatures on Glacier without a jacket.
 
 # These traits largely exist to demonstrate more of the "Component Removals" functionality. This way contributors
 # can get used to seeing that they can "Remove and Replace" a pre-existing component.
@@ -282,21 +370,22 @@
       species:
         - Harpy # Harpies already have talons
         - Arachnid # Apparently they have a "piercing" bite
+        - Feroxi # Floof - They bite. Piercing damage. Nuff said.
     - !type:CharacterTraitRequirement
       inverted: true
       traits:
         - Claws
-  componentRemovals:
-    - MeleeWeapon # Remove the original innate melee attack, so that it can be replaced with a new one.
-  components:
-    - type: MeleeWeapon
-      soundHit:
-        collection: AlienClaw
-      animation: WeaponArcClaw
-      damage:
-        types:
-          Piercing: 5 # No, this isn't "OP", this is literally the worst brute damage type in the game.
-                      # Same deal as Slash, except that a majority of all armor provides Piercing resistance.
+  functions:
+    - !type:TraitReplaceComponent
+      components:
+        - type: MeleeWeapon
+          soundHit:
+            collection: AlienClaw
+          animation: WeaponArcClaw
+          damage:
+            types:
+              Piercing: 5 # No, this isn't "OP", this is literally the worst brute damage type in the game.
+                          # Same deal as Slash, except that a majority of all armor provides Piercing resistance.
 
 - type: trait
   id: Claws
@@ -311,22 +400,24 @@
         - Shadowkin # Shadowkins also have claws.
         # - Vulpkanin # Vulpkanin have "Blunt" claws. One could argue this trait "Sharpens" their claws.
         - Rodentia # Floof - Rodentia already has it
+        - Resomi # Floof - they have claws after port of Goob changes
+        - Feroxi # Floof - They bite. Nuff said.
     - !type:CharacterTraitRequirement
       inverted: true
       traits:
         - Talons
-  componentRemovals:
-    - MeleeWeapon # Remove the original innate melee attack, so that it can be replaced with a new one.
-  components:
-    - type: MeleeWeapon
-      soundHit:
-        collection: AlienClaw
-      angle: 30
-      animation: WeaponArcClaw
-      damage:
-        types:
-          Slash: 5 # Trade stamina damage on hit for a very minor amount of extra bleed.
-                   # Blunt also deals bleed damage, so this is more of a sidegrade.
+  functions:
+    - !type:TraitReplaceComponent
+      components:
+        - type: MeleeWeapon
+          soundHit:
+            collection: AlienClaw
+          angle: 30
+          animation: WeaponArcClaw
+          damage:
+            types:
+              Slash: 5 # Trade stamina damage on hit for a very minor amount of extra bleed.
+                      # Blunt also deals bleed damage, so this is more of a sidegrade.
 
 - type: trait
   id: NaturalWeaponRemoval
@@ -339,22 +430,23 @@
         - Human
         - Oni
         - SlimePerson
+        - IPC # Floof - M3739 - #690 - Ever seen Real Steel?
     - !type:CharacterTraitRequirement
       inverted: true
       traits:
         - Talons
         - Claws
-  componentRemovals:
-    - MeleeWeapon # Remove the original innate melee attack, so that it can be replaced with a new one.
-  components:
-    - type: MeleeWeapon
-      soundHit:
-        collection: Punch
-      angle: 30
-      animation: WeaponArcFist
-      damage:
-        types:
-          Blunt: 5
+  functions:
+    - !type:TraitReplaceComponent
+      components:
+        - type: MeleeWeapon
+          soundHit:
+            collection: Punch
+          angle: 30
+          animation: WeaponArcFist
+          damage:
+            types:
+              Blunt: 5
 
 - type: trait
   id: StrikingCalluses
@@ -383,28 +475,27 @@
         - !type:CharacterJobRequirement
           jobs:
             - Boxer
-  componentRemovals:
-    - MeleeWeapon
-  components:
-    - type: MeleeWeapon
-      soundHit:
-        collection: Punch
-      angle: 30
-      animation: WeaponArcFist
-      damage:
-        types:
-          Blunt: 6
+  functions:
+    - !type:TraitReplaceComponent
+      components:
+        - type: MeleeWeapon
+          soundHit:
+            collection: Punch
+          angle: 30
+          animation: WeaponArcFist
+          damage:
+            types:
+              Blunt: 6
 
 - type: trait
   id: Spinarette
   category: Physical
-  points: -4
+  points: -2
   requirements:
     - !type:CharacterJobRequirement
       inverted: true
       jobs:
         - Prisoner # Bionics should be "Confiscated" from long term prisoners.
-        - Gladiator # Floof
     - !type:CharacterSpeciesRequirement
       inverted: true
       species:
@@ -412,12 +503,17 @@
         - Arachne
         - Shadowkin
         - IPC
-  components:
-    - type: Sericulture
-      action: ActionSericulture
-      productionLength: 2
-      entityProduced: MaterialWebSilk1
-      hungerCost: 4
+  functions:
+    - !type:TraitAddComponent
+      components:
+        - type: Sericulture
+          action: ActionSericulture
+          productionLength: 2
+          entityProduced: MaterialWebSilk1
+          hungerCost: 1
+    - !type:TraitAddTag
+      tags:
+        - SpiderCraft
 
 - type: trait
   id: BionicArm
@@ -428,11 +524,18 @@
       inverted: true
       jobs:
         - Prisoner # Bionics should be "Confiscated" from long term prisoners.
-        - Gladiator # Floof
-  components:
-    - type: Prying
-      speedModifier: 1
-      pryPowered: false # Floof
+        - Gladiator
+  functions:
+    - !type:TraitAddComponent
+      components:
+        - type: Prying
+          speedModifier: 1
+          pryPowered: false # Floof
+    - !type:TraitPushDescription
+      descriptionExtensions:
+        - description: examine-bionic-arm-message
+          fontSize: 12
+          requireDetailRange: true
 
 - type: trait
   id: PlateletFactories
@@ -448,45 +551,49 @@
       inverted: true
       species:
         - IPC
-  componentRemovals:
-    - PassiveDamage
-  components:
-    - type: PassiveDamage
-      allowedStates:
-      - Alive
-      - Critical
-      damageCap: 200
-      damage:
-        groups:
-          Brute: -0.07
-          Burn: -0.07
-          Airloss: -0.07
-          Toxin: -0.07
-          Genetic: -0.07
+  functions: # TODO: Code Platelet factories as an actual obtainable implant, and replace this with TraitAddImplant
+    - !type:TraitReplaceComponent
+      components:
+        - type: PassiveDamage
+          allowedStates:
+          - Alive
+          - Critical
+          damageCap: 200
+          damage:
+            groups:
+              Brute: -0.07
+              Burn: -0.07
+              Airloss: -0.07
+              Toxin: -0.07
+              Genetic: -0.07
 
 - type: trait
   id: DermalArmor
   category: Physical
-  points: -9
+  points: -6
   requirements:
     - !type:CharacterJobRequirement
       inverted: true
       jobs:
         - Prisoner # Bionics should be "Confiscated" from long term prisoners.
         - Gladiator # Floof
-    - !type:CharacterSpeciesRequirement
+    - !type:CharacterSpeciesRequirement # Floof
       species:
         - Human
-  componentRemovals:
-    - Damageable
-  components:
-    - type: Damageable
-      damageModifierSet: DermalArmor
+  functions:
+    - !type:TraitAddArmor
+      damageModifierSets:
+        - DermalArmor
+    - !type:TraitPushDescription
+      descriptionExtensions:
+        - description: examine-dermal-armor-message
+          fontSize: 12
+          requireDetailRange: true
 
 - type: trait
   id: CyberEyes
   category: Physical
-  points: -8
+  points: -4
   requirements:
     - !type:CharacterJobRequirement
       inverted: true
@@ -499,12 +606,35 @@
         - Photophobia
         - Blindness
         - Nearsighted
-  componentRemovals:
-    - Flashable
-  components:
-    - type: FlashImmunity
-    - type: EyeProtection
-    - type: CyberEyes
+  functions:
+    - !type:TraitPushDescription
+      descriptionExtensions:
+        - description: examine-cybereyes-message
+          fontSize: 12
+          requireDetailRange: true
+    - !type:TraitReplaceComponent
+      components:
+        - type: Flashable # Effectively, removes any flash-vulnerability species traits.
+
+
+- type: trait
+  id: FlareShielding
+  category: Physical
+  points: -4
+  requirements:
+#    - !type:CharacterJobRequirement # Floof - this is redundant due to the below trait requirement
+#      inverted: true
+#      jobs:
+#        - Prisoner # Bionics should be "Confiscated" from long term prisoners.
+    - !type:CharacterTraitRequirement
+      traits:
+        - CyberEyes
+  functions:
+    - !type:TraitAddComponent
+      components:
+        - type: FlashImmunity
+        - type: EyeProtection
+
 
 - type: trait
   id: CyberEyesSecurity
@@ -526,10 +656,12 @@
       inverted: true
       traits:
         - CyberEyesOmni
-  components:
-    - type: ShowJobIcons
-    - type: ShowMindShieldIcons
-    - type: ShowCriminalRecordIcons
+  functions:
+    - !type:TraitAddComponent
+      components:
+        - type: ShowJobIcons
+        - type: ShowMindShieldIcons
+        - type: ShowCriminalRecordIcons
 
 - type: trait
   id: CyberEyesMedical
@@ -549,13 +681,15 @@
       traits:
         - CyberEyesDiagnostic
         - CyberEyesOmni
-  components:
-    - type: ShowHealthBars
-      damageContainers:
-      - Biological
-    - type: ShowHealthIcons
-      damageContainers:
-      - Biological
+  functions:
+    - !type:TraitAddComponent
+      components:
+        - type: ShowHealthBars
+          damageContainers:
+          - Biological
+        - type: ShowHealthIcons
+          damageContainers:
+          - Biological
 
 - type: trait
   id: CyberEyesDiagnostic
@@ -575,11 +709,13 @@
       traits:
         - CyberEyesMedical
         - CyberEyesOmni
-  components:
-    - type: ShowHealthBars
-      damageContainers:
-      - Inorganic
-      - Silicon
+  functions:
+    - !type:TraitAddComponent
+      components:
+        - type: ShowHealthBars
+          damageContainers:
+          - Inorganic
+          - Silicon
 
 - type: trait
   id: CyberEyesOmni
@@ -603,15 +739,137 @@
         - CyberEyesMedical
         - CyberEyesDiagnostic
         - CyberEyesSecurity
-  components:
-    - type: ShowJobIcons
-    - type: ShowMindShieldIcons
-    - type: ShowCriminalRecordIcons
-    - type: ShowHealthIcons
-      damageContainers:
-      - Biological
-    - type: ShowHealthBars
-      damageContainers:
-      - Biological
-      - Inorganic
-      - Silicon
+  functions:
+    - !type:TraitAddComponent
+      components:
+        - type: ShowJobIcons
+        - type: ShowMindShieldIcons
+        - type: ShowCriminalRecordIcons
+        - type: ShowHealthIcons
+          damageContainers:
+          - Biological
+        - type: ShowHealthBars
+          damageContainers:
+          - Biological
+          - Inorganic
+          - Silicon
+
+- type: trait
+  id: Redshirt
+  category: Physical
+  points: 8
+  requirements:
+    - !type:CharacterJobRequirement
+      inverted: true
+      jobs:
+        - Borg
+        - MedicalBorg
+    - !type:CharacterSpeciesRequirement
+      inverted: true
+      species:
+        - IPC
+    - !type:CharacterTraitRequirement
+      inverted: true
+      traits: # Floof - M3739 - #690 - As it stands, this trait COMPLETELY REMOVES the crit status altogether. Traits that alter crit thresholds will have no effect as a result.
+        - WillToLive
+        - WillToDie
+        - GlassJaw
+        - Tenacity
+        - BrittleBoneDisease
+
+  functions:
+    - !type:TraitReplaceComponent
+      components:
+        - type: DeadModifier
+          deadThresholdModifier: -100
+
+- type: trait
+  id: BrittleBoneDisease
+  category: Physical
+  points: 10
+  requirements:
+    - !type:CharacterJobRequirement
+      inverted: true
+      jobs:
+        - Borg
+        - MedicalBorg
+    - !type:CharacterSpeciesRequirement
+      inverted: true
+      species:
+        - IPC
+    - !type:CharacterTraitRequirement
+      inverted: true
+      traits: # Floof - M3739 - #690
+        - GlassJaw
+        - Tenacity
+        - Redshirt
+  functions:
+    - !type:TraitReplaceComponent
+      components:
+        - type: CritModifier
+          critThresholdModifier: -50
+
+- type: trait
+  id: BionicLeg #was removed upstream due to goobstation powergaming but we get less powergaming here so it's probably fine
+  category: Physical
+  points: -8
+  requirements:
+    - !type:CharacterJobRequirement
+      inverted: true
+      jobs:
+        - Prisoner # Bionics should be "Confiscated" from long term prisoners.
+  functions:
+    - !type:TraitPushDescription
+      descriptionExtensions:
+        - description: examine-bionic-leg-message
+          fontSize: 12
+          requireDetailRange: true
+    - !type:TraitCyberneticLimbReplacement
+      removeBodyPart: Leg
+      partSymmetry: Left
+      protoId: SpeedLeftLeg
+      slotId: "left leg"
+
+- type: trait
+  id: LightAmplification
+  category: Physical
+  points: -4
+  requirements:
+    - !type:CharacterTraitRequirement
+      traits:
+        - CyberEyes
+    - !type:CharacterTraitRequirement # Floof added Photophobia as drawback to nightvision
+      inverted: true
+      traits:
+      - Photophobia
+  functions:
+    - !type:TraitAddComponent
+      components:
+        - type: NightVision
+        - type: Flashable # Floof added Photophobia as drawback to nightvision
+          eyeDamageChance: 0.3
+          eyeDamage: 1
+          durationMultiplier: 1.5
+
+#  id: ThermographicVision disabled because op
+#  category: Physical
+#  points: -8
+#  requirements:
+#    - !type:CharacterJobRequirement
+#      inverted: true
+#      jobs:
+#        - Prisoner # Bionics should be "Confiscated" from long term prisoners.
+#    - !type:CharacterTraitRequirement
+#      traits:
+#        - CyberEyes
+#  functions:
+#    - !type:TraitAddComponent
+#      components:
+#        - type: ThermalVision
+#          pulseTime: 2
+#          toggleAction: PulseThermalVision
+#    - !type:TraitPushDescription
+#      descriptionExtensions:
+#        - description: examine-thermal-vision-message
+#          fontSize: 12
+#          requireDetailRange: true

@@ -698,6 +698,16 @@
      Glass: 500
 
 - type: latheRecipe
+  id: AlertsComputerCircuitboard
+  result: AlertsComputerCircuitboard
+  category: Circuitry
+  completetime: 4
+  materials:
+    Steel: 100
+    Glass: 500
+
+# Floof
+- type: latheRecipe
   id: CloningConsoleComputerCircuitboard
   result: CloningConsoleComputerCircuitboard
   category: Circuitry
@@ -930,7 +940,6 @@
   completetime: 6
   materials:
      Steel: 100
-
      Glass: 500
 
 - type: latheRecipe
@@ -969,6 +978,16 @@
      Gold: 100
 
 - type: latheRecipe
+  id: StationAnchorCircuitboard
+  result: StationAnchorCircuitboard
+  category: Circuitry
+  completetime: 8
+  materials:
+    Steel: 100
+    Glass: 900
+    Gold: 100
+
+- type: latheRecipe
   id: ReagentGrinderIndustrialMachineCircuitboard
   result: ReagentGrinderIndustrialMachineCircuitboard
   completetime: 5
@@ -976,7 +995,7 @@
      Steel: 100
      Glass: 500
      Gold: 100
- 
+
 - type: latheRecipe
   id: JukeboxCircuitBoard
   result: JukeboxCircuitBoard
@@ -984,3 +1003,13 @@
   materials:
     Steel: 100
     Glass: 500
+
+- type: latheRecipe
+  id: MaterialSiloCircuitboard
+  result: MaterialSiloCircuitboard
+  category: Circuitry
+  completetime: 5
+  materials:
+    Steel: 100
+    Glass: 500
+    Gold: 100

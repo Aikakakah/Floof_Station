@@ -12,14 +12,19 @@
   femaleFirstNames: DionaFirst
   lastNames: DionaLast
   naming: TheFirstofLast
+  customName: true # Floof
 
 - type: speciesBaseSprites
   id: MobDionaSprites
   sprites:
+    TailBehind: MobHumanoidAnyMarking
+    TailOversuit: MobHumanoidAnyMarking
     Head: MobDionaHead
     HeadTop: MobHumanoidAnyMarking
     HeadSide: MobHumanoidAnyMarking
     Chest: MobDionaTorso
+    Underwear: MobHumanoidAnyMarking # Floof, add underwear
+    Undershirt: MobHumanoidAnyMarking # Floof, add underwear
     Eyes: MobDionaEyes
     LArm: MobDionaLArm
     RArm: MobDionaRArm
@@ -29,11 +34,19 @@
     RLeg: MobDionaRLeg
     LFoot: MobDionaLFoot
     RFoot: MobDionaRFoot
+    Tail: MobHumanoidAnyMarking
+    Wings: MobHumanoidAnyMarking
 
 - type: markingPoints
   id: MobDionaMarkingLimits
   onlyWhitelisted: true
   points:
+    Underwear:
+      points: 2 # FLOOF CHANGE
+      required: false # Floof, add underwear
+    Undershirt:
+      points: 2 # FLOOF CHANGE
+      required: false # Floof, add underwear
     Head:
       points: 2
       required: false
@@ -41,6 +54,12 @@
       points: 1
       required: false
     HeadSide:
+      points: 3
+      required: false
+    Tail:
+      points: 1
+      required: false
+    Wings:
       points: 1
       required: false
     Chest:

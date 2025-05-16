@@ -2,13 +2,16 @@
   id: Swashbuckler
   category: Physical
   points: -2
-  components:
-  - type: OniDamageModifier
-    modifiers:
-      coefficients:
-        Blunt: 1.2
-        Slash: 1.35
-        Piercing: 1.2
+  functions:
+    - !type:TraitReplaceComponent
+      components:
+      - type: BonusMeleeDamage # Floof - Oni refactor
+        damageModifierSet:
+          coefficients:
+            Blunt: 1.2
+            Slash: 1.35
+            Piercing: 1.2
+            Asphyxiation: 1.35 # Floof - since these traits override the damage modifier set, asphxiation needs re-added. Not that it uh, does anything?
   requirements:
     - !type:CharacterSpeciesRequirement
       species:
@@ -23,13 +26,16 @@
   id: Spearmaster
   category: Physical
   points: -2
-  components:
-  - type: OniDamageModifier
-    modifiers:
-      coefficients:
-        Blunt: 1.2
-        Slash: 1.2
-        Piercing: 1.35
+  functions:
+    - !type:TraitReplaceComponent
+      components:
+      - type: BonusMeleeDamage # Floof - oni refector
+        damageModifierSet: 
+          coefficients:
+            Blunt: 1.2
+            Slash: 1.2
+            Piercing: 1.35
+            Asphyxiation: 1.35 # Floof
   requirements:
     - !type:CharacterSpeciesRequirement
       species:
@@ -44,13 +50,16 @@
   id: WeaponsGeneralist
   category: Physical
   points: -2
-  components:
-  - type: OniDamageModifier
-    modifiers:
-      coefficients:
-        Blunt: 1.25
-        Slash: 1.25
-        Piercing: 1.25
+  functions:
+    - !type:TraitReplaceComponent
+      components:
+      - type: BonusMeleeDamage # Floof - Oni refactor
+        damageModifierSet: 
+          coefficients:
+            Blunt: 1.25
+            Slash: 1.25
+            Piercing: 1.25
+            Asphyxiation: 1.35 # Floof
   requirements:
     - !type:CharacterSpeciesRequirement
       species:
@@ -65,11 +74,11 @@
 #   id: ShadowkinBlackeye
 #   category: Mental
 #   points: 4
-#   componentRemovals:
-#     - Shadowkin
-#   components:
-#     - type: Shadowkin
-#       blackeyeSpawn: true
+#   functions:
+#     - !type:TraitReplaceComponent
+#       components:
+#         - type: Shadowkin
+#           blackeyeSpawn: true
 #   requirements:
 #     - !type:CharacterSpeciesRequirement
 #       species:

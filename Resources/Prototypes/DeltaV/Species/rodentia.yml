@@ -13,24 +13,29 @@
   lastNames: names_rodentia_last
   naming: LastFirst
   minHeight: 0.65
-  defaultHeight: 0.8
+  #defaultHeight: 0.8 Floofstation - disabled due to upstream bug, this is broken for any value other than 1.
   maxHeight: 1.1
   minWidth: 0.6
-  defaultWidth: 0.8
+  #defaultWidth: 0.8 Floofstation - disabled due to upstream bug, this is broken for any value other than 1.
   maxWidth: 1.15
   customName: true
 
 - type: speciesBaseSprites
   id: MobRodentiaSprites
   sprites:
+    TailBehind: MobHumanoidAnyMarking
+    TailOversuit: MobHumanoidAnyMarking
     Head: MobRodentiaHead
     Hair: MobHumanoidAnyMarking
     FacialHair: MobHumanoidAnyMarking
     Snout: MobHumanoidAnyMarking
     Chest: MobRodentiaTorso
+    Underwear: MobHumanoidAnyMarking
+    Undershirt: MobHumanoidAnyMarking
     HeadTop: MobHumanoidAnyMarking
     HeadSide: MobHumanoidAnyMarking
     Tail: MobHumanoidAnyMarking
+    Wings: MobHumanoidAnyMarking
     Eyes: MobHumanoidEyes
     LArm: MobRodentiaLArm
     RArm: MobRodentiaRArm
@@ -44,6 +49,12 @@
 - type: markingPoints
   id: MobRodentiaMarkingLimits
   points:
+    Underwear:
+      points: 2 # FLOOF CHANGE
+      required: false # Floof, add underwear
+    Undershirt:
+      points: 2 # Floof, add underwear # FLOOF CHANGE
+      required: false
     Hair:
       points: 1
       required: false
@@ -54,8 +65,11 @@
       points: 1
       required: true
       defaultMarkings: [ RodentiaTailDefault ]
-    Head:
+    Wings:
       points: 1
+      required: false
+    Head:
+      points: 2
       required: false
     RightLeg:
       points: 2

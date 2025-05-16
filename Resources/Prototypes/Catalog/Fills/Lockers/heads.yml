@@ -23,8 +23,11 @@
       - id: BoxPDACargo # Delta-V
       - id: QuartermasterIDCard # Delta-V
       - id: ClothingLongcoatLO # Floofstation
+      - id: AstroNavCartridge
       - id: LunchboxCommandFilledRandom # Delta-V Lunchboxes!
         prob: 0.3
+      - id: CargoTechFabCircuitboard # Floof - port to EE if possible
+      - id: ClothingEyesGlassesCommand
 
 - type: entity
   id: LockerCaptainFilledHardsuit
@@ -33,58 +36,47 @@
   components:
   - type: StorageFill
     contents:
-      - id: ClothingOuterArmorCaptainCarapace
       - id: ClothingLongcoatCap # Floofstation
+      - id: ClothingOuterCoatCapTrench
       - id: NukeDisk
       - id: PinpointerNuclear
-#     - id: CaptainIDCard # DeltaV - Replaced by the spare ID system
+      - id: CaptainIDCard
       - id: ClothingOuterHardsuitCap
-      - id: WeaponDisabler
       - id: CommsComputerCircuitboard
       - id: ClothingHeadsetAltCommand
-      - id: SpaceCash1000
       - id: PlushieNuke
         prob: 0.1
-      - id: CigarGoldCase
-        prob: 0.25
-      - id: ClothingBeltSheathFilled
       - id: DoorRemoteCommand
       - id: RubberStampCaptain
-#     - id: WeaponAntiqueLaser # DeltaV - Remove in favor of the glass box
       - id: JetpackCaptainFilled
-      - id: MedalCase
+      - id: MedalCase # Floof - we keep this.
       - id: LunchboxCommandFilledRandom # Delta-V Lunchboxes!
         prob: 0.3
+      - id: ClothingEyesGlassesCommand
 
 - type: entity
   id: LockerCaptainFilled
-  suffix: Filled, AntiqueLaser
+  suffix: Filled, AntiqueLaser # Deprecated, Antique laser is now part of Captain's Loadouts.
   parent: LockerCaptain
   components:
   - type: StorageFill
     contents:
-      - id: ClothingOuterArmorCaptainCarapace
       - id: ClothingLongcoatCap # Floofstation
+      - id: ClothingOuterCoatCapTrench
       - id: NukeDisk
       - id: PinpointerNuclear
-#     - id: CaptainIDCard # DeltaV - Replaced by the spare ID system
-      - id: WeaponDisabler
+      - id: CaptainIDCard
       - id: CommsComputerCircuitboard
       - id: ClothingHeadsetAltCommand
-      - id: SpaceCash1000
       - id: PlushieNuke
         prob: 0.1
-      - id: CigarGoldCase
-        prob: 0.25
-      - id: ClothingBeltSheathFilled
       - id: DoorRemoteCommand
       - id: RubberStampCaptain
-      - id: WeaponAntiqueLaser
       - id: JetpackCaptainFilled
-      - id: MedalCase
-      - id: ClothingHeadHatBeretCap # Nyanotrasen - Captain's Beret
-      - id: LunchboxCommandFilledRandom # Delta-V Lunchboxes!
+      - id: MedalCase # Floof - we keep this
+      - id: LunchboxCommandFilledRandom
         prob: 0.3
+      - id: ClothingEyesGlassesCommand
 
 - type: entity
   id: LockerCaptainFilledNoLaser
@@ -93,27 +85,22 @@
   components:
   - type: StorageFill
     contents:
-      - id: ClothingOuterArmorCaptainCarapace
       - id: ClothingLongcoatCap # Floofstation
+      - id: ClothingOuterCoatCapTrench
       - id: NukeDisk
       - id: PinpointerNuclear
-#      - id: CaptainIDCard # Delta V - Replaced by spare ID system. The funny biscuit that I cant even eat.
-      - id: WeaponDisabler
+      - id: CaptainIDCard
       - id: CommsComputerCircuitboard
       - id: ClothingHeadsetAltCommand
-      - id: SpaceCash1000
       - id: PlushieNuke
         prob: 0.1
-      - id: CigarGoldCase
-        prob: 0.25
-      - id: ClothingBeltSheathFilled
       - id: DoorRemoteCommand
       - id: RubberStampCaptain
       - id: JetpackCaptainFilled
-      - id: MedalCase
-      - id: ClothingHeadHatBeretCap # Nyanotrasen - Captain's Beret
-      - id: LunchboxCommandFilledRandom # Delta-V Lunchboxes!
+      - id: MedalCase # Floof - we keep this
+      - id: LunchboxCommandFilledRandom
         prob: 0.3
+      - id: ClothingEyesGlassesCommand
 
 - type: entity
   id: LockerHeadOfPersonnelFilled
@@ -129,25 +116,17 @@
       - id: BoxID
       - id: BoxHeadset
       - id: IDComputerCircuitboard
-      - id: WeaponDisabler
-      - id: ClothingOuterCoatHoPArmored # DeltaV
-      - id: ClothingOuterArmorDuraVest # DeltaV - replaced HoP's armoured coat with a standard stabproof, pending HoPcoat resprite
-      - id: CigarGoldCase
-        prob: 0.25
-        # Fuck the HoP they don't deserve fucking cigars.
-        # Yes they do fuck you.
       - id: DoorRemoteService
-      - id: ClothingNeckGoldmedal
       - id: RubberStampHop
       - id: RubberStampDenied
       - id: RubberStampApproved
       - id: BoxEncryptionKeyPassenger
       - id: BoxEncryptionKeyService
       - id: AccessConfigurator
-      - id: BookIanDossier # DeltaV - HoP steal objective, see Resources/Prototypes/DeltaV/Entities/Objects/Misc/ian_dossier.yml
-      - id: ClothingHandsGlovesInspection # DeltaV - Add inspection gloves for HoP.
       - id: LunchboxCommandFilledRandom # Delta-V Lunchboxes!
         prob: 0.3
+      - id: ServiceTechFabCircuitboard # Floof - port to ee if possible
+      - id: ClothingEyesHudCommand
 
 - type: entity
   id: LockerChiefEngineerFilledHardsuit
@@ -158,9 +137,9 @@
     contents:
       - id: ClothingOuterHardsuitEngineeringWhite
       - id: ClothingLongcoatCE # Floofstation
+      - id: ClothingBeltChiefEngineerFilled # Floofstation
       - id: ClothingMaskBreath
       - id: ClothingEyesGlassesMeson
-      - id: ClothingBeltChiefEngineerFilled
       - id: ClothingShoesBootsMagAdv
       - id: ClothingHandsGlovesColorYellow
       - id: CigarCase
@@ -177,6 +156,7 @@
       - id: CEIDCard # Delta-V
       - id: LunchboxCommandFilledRandom # Delta-V Lunchboxes!
         prob: 0.3
+      - id: EngineeringTechFabCircuitboard # Floofstation - port to ee if possible
 
 - type: entity
   id: LockerChiefEngineerFilled
@@ -202,6 +182,7 @@
       - id: RCDAmmo
       - id: LunchboxCommandFilledRandom # Delta-V Lunchboxes!
         prob: 0.3
+      - id: EngineeringTechFabCircuitboard # Floofstation - port to ee if possible
 
 - type: entity
   id: LockerChiefMedicalOfficerFilledHardsuit
@@ -231,6 +212,7 @@
       - id: CMOIDCard # Delta-V
       - id: LunchboxCommandFilledRandom # Delta-V Lunchboxes!
         prob: 0.3
+      - id: MedicalBiofabMachineBoard # Shitmed Change
 
 - type: entity
   id: LockerChiefMedicalOfficerFilled
@@ -254,8 +236,10 @@
       - id: BoxPDAMedical # Delta-V
       - id: ClothingBeltMilitaryWebbingCMO # DeltaV - add webbing for CMO. ON THIS STATION, IT'S DRIP OR [die], CAPTAIN!
       - id: CMOIDCard # Delta-V
+      - id: MedTekCartridge # Delta-v
       - id: LunchboxCommandFilledRandom # Delta-V Lunchboxes!
         prob: 0.3
+      - id: MedicalBiofabMachineBoard # Shitmed Change
 
 - type: entity
   id: LockerResearchDirectorFilledHardsuit
@@ -313,10 +297,12 @@
     contents:
       - id: ClothingEyesHudSecurity
       - id: WeaponDisabler
+      - id: WeaponEnergyShotgun
       - id: ClothingOuterCoatHoSTrench
       - id: ClothingLongcoatHoS # Floofstation
       - id: ClothingMaskNeckGaiter
       - id: ClothingOuterHardsuitCombatHoS # DeltaV - ClothingOuterHardsuitSecurityRed replaced in favour of head of security's advanced combat hardsuit.
+      - id: ClothingShoesBootsSecurityMagboots # Floofstation
       - id: ClothingBeltSecurityFilled
       - id: ClothingHeadsetAltSecurity
       - id: ClothingEyesGlassesSunglasses
@@ -329,11 +315,11 @@
       - id: JetpackSecurityFilled
       - id: BoxEncryptionKeySecurity
       - id: HoloprojectorSecurity
-      - id: BookSecretDocuments
       - id: BoxPDASecurity # Delta-V
       - id: HoSIDCard # Delta-V
       - id: LunchboxCommandFilledRandom # Delta-V Lunchboxes!
         prob: 0.3
+      - id: HyperlinkBookSpaceLaw # Floof - M3739 - #607
 
 - type: entity
   id: LockerHeadOfSecurityFilled
@@ -344,6 +330,7 @@
     contents:
       - id: ClothingEyesHudSecurity
       - id: WeaponDisabler
+      - id: WeaponEnergyShotgun
       - id: ClothingOuterCoatHoSTrench
       - id: ClothingLongcoatHoS # Floofstation
       - id: ClothingMaskNeckGaiter
@@ -358,11 +345,11 @@
       - id: SecurityTechFabCircuitboard
       - id: BoxEncryptionKeySecurity
       - id: HoloprojectorSecurity
-      - id: BookSecretDocuments
       - id: BoxPDASecurity # Delta-V
       - id: HoSIDCard # Delta-V
       - id: LunchboxCommandFilledRandom # Delta-V Lunchboxes!
         prob: 0.3
+      - id: HyperlinkBookSpaceLaw # Floof - M3739 - #607
 
 - type: entity
   id: LockerFreezerVaultFilled
@@ -379,3 +366,36 @@
     - id: SpaceCash1000
     - id: BeachBall
     - id: BikeHorn
+
+- type: entity
+  id: LockerCentCommFilled # CC Locker
+  suffix: Filled
+  parent: LockerCentComm
+  components:
+  - type: StorageFill
+    contents:
+      - id: ClothingBackpackHolding
+      - id: JetpackBlackFilled
+      - id: DoorRemoteAll
+      - id: RubberStampCentcom
+      - id: RubberStampDenied
+      - id: RubberStampApproved
+      - id: BoxFolderCentComClipboard
+      - id: CentcomPDA
+      - id: BoxFolderCentCom
+      - id: ClothingHeadsetAltCentCom
+      - id: ClothingHeadHatCentcomcap
+      - id: ClothingMaskGasCentcom
+      - id: CentcomIDCard
+      - id: ClothingOuterWinterCCWarden
+      - id: ClothingNeckCloakCentcom
+      - id: AccessConfigurator
+      - id: ClothingOuterHardsuitERTCentcomm
+      - id: WeaponDisabler
+      - id: WeaponPistolN1984
+      - id: ClothingShoesBootsCombatFilled
+      - id: ClothingUniformJumpskirtCentcomDirector
+      - id: ClothingUniformJumpsuitCentcomDirector
+      - id: ClothingEyesGlassesSunglasses
+      - id: ClothingHandsGlovesColorBlack
+      - id: PenCentcom

@@ -1,0 +1,43 @@
+- type: entity
+  id: CrateNTxenos
+  parent: Cratexeno
+  suffix: Filled, Random
+  name: Xeno Companion Crate
+  description: Xeno Companion Crate
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        # Rounies
+        - !type:GroupSelector
+          children:
+          - !type:EntSelector
+            id: DehydratedFRouny
+            weight: 25
+          - !type:EntSelector
+            id: DehydratedCCRouny
+        # Praetorians
+        - !type:GroupSelector
+          children:
+          - !type:EntSelector
+            id: DehydratedFPraetorian
+            weight: 25
+          - !type:EntSelector
+            id: DehydratedCCPraetorian
+        # Ravagers
+        - !type:GroupSelector
+          children:
+          - !type:EntSelector
+            id: DehydratedFRavager
+            weight: 25
+          - !type:EntSelector
+            id: DehydratedCCRavager
+        # Drones
+        - !type:GroupSelector
+          children:
+          - !type:EntSelector
+            id: DehydratedFDrone
+            weight: 25
+          - !type:EntSelector
+            id: DehydratedCCDrone

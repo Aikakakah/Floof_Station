@@ -4,9 +4,10 @@
   roundStart: true
   prototype: MobHuman
   sprites: MobHumanSprites
+  defaultSkinTone: "#c0967f"
   markingLimits: MobHumanMarkingLimits
   dollPrototype: MobHumanDummy
-  skinColoration: HumanToned
+  skinColoration: Hues
   customName: true
 
 # The lack of a layer means that
@@ -18,11 +19,16 @@
 - type: speciesBaseSprites
   id: MobHumanSprites
   sprites:
+    TailBehind: MobHumanoidAnyMarking
+    TailOversuit: MobHumanoidAnyMarking
     Head: MobHumanHead
+    Face: MobHumanoidAnyMarking
     Hair: MobHumanoidAnyMarking
     FacialHair: MobHumanoidAnyMarking
     Snout: MobHumanoidAnyMarking
     Chest: MobHumanTorso
+    Underwear: MobHumanoidAnyMarking # Floof, add underwear
+    Undershirt: MobHumanoidAnyMarking # Floof, add underwear
     Eyes: MobHumanoidEyes
     LArm: MobHumanLArm
     RArm: MobHumanRArm
@@ -32,13 +38,20 @@
     RLeg: MobHumanRLeg
     LFoot: MobHumanLFoot
     RFoot: MobHumanRFoot
-    Tail: MobHumanoidAnyMarking # Nyanotrasen - Felinid
-    HeadTop: MobHumanoidAnyMarking # Nyanotrasen - Felinid & Oni
+    Tail: MobHumanoidAnyMarking
+    Wings: MobHumanoidAnyMarking
+    HeadTop: MobHumanoidAnyMarking
     HeadSide: MobHumanoidAnyMarking
 
 - type: markingPoints
   id: MobHumanMarkingLimits
   points:
+    Underwear:
+      points: 2 # FLOOF CHANGE
+      required: false # Floof, add underwear
+    Undershirt:
+      points: 2 # FLOOF CHANGE
+      required: false # Floof, add underwear
     Hair:
       points: 1
       required: false
@@ -51,8 +64,14 @@
     Tail:
       points: 1
       required: false
+    Wings:
+      points: 1
+      required: false
     HeadTop:
       points: 1
+      required: false
+    HeadSide:
+      points: 4
       required: false
     Chest:
       points: 1
@@ -73,13 +92,13 @@
       points: 2
       required: false
     RightHand:
-      points: 2
+      points: 3
       required: false
     LeftArm:
       points: 2
       required: false
     LeftHand:
-      points: 2
+      points: 3
       required: false
 
 - type: humanoidBaseSprite

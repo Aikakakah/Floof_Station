@@ -13,6 +13,14 @@
     Plastic: 200
 
 - type: latheRecipe
+  id: BolaEnergy
+  result: BolaEnergy
+  completetime: 2
+  materials:
+    Plastic: 200
+    Plasma: 150
+
+- type: latheRecipe
   id: Stunbaton
   result: Stunbaton
   category: Weapons
@@ -59,6 +67,45 @@
     Glass: 1000
     Gold: 850
 
+- type: latheRecipe
+  id: BorgModuleStun
+  result: BorgModuleStun
+  category: Weapons
+  completetime: 5
+  materials:
+    Steel: 700
+    Glass: 500
+    Plastic: 200
+
+- type: latheRecipe
+  id: BorgModuleKill
+  result: BorgModuleKill
+  category: Weapons
+  completetime: 5
+  materials:
+    Steel: 1500
+    Glass: 1000
+    Gold: 850
+
+- type: latheRecipe
+  id: BorgModuleInvestigation
+  result: BorgModuleInvestigation
+  category: Weapons
+  completetime: 5
+  materials:
+    Steel: 1500
+    Glass: 1000
+    Gold: 850
+
+# - type: latheRecipe
+  # id: WeaponEnergyShotgun
+  # result: WeaponEnergyShotgun
+  # category: Weapons
+  # completetime: 5
+  # materials:
+    # Steel: 2000
+    # Glass: 1500
+    # Gold: 1000
 - type: latheRecipe
   id: WeaponLaserCannon
   result: WeaponLaserCannon
@@ -235,6 +282,15 @@
     Steel: 145
 
 - type: latheRecipe
+  id: MagazinePistolRubber
+  result: MagazinePistolRubber
+  category: Ammo
+  completetime: 5
+  materials:
+    Steel: 45
+    Plastic: 100
+
+- type: latheRecipe
   id: MagazinePistolPractice
   result: MagazinePistolPractice
   category: Ammo
@@ -276,6 +332,34 @@
   completetime: 5
   materials:
     Steel: 300
+
+- type: latheRecipe
+  id: MagazinePistolSubMachineGunRubber
+  result: MagazinePistolSubMachineGunRubber
+  category: Ammo
+  completetime: 5
+  materials:
+    Steel: 100
+    Plastic: 200
+
+- type: latheRecipe
+  id: MagazinePistolSubMachineGunUranium
+  result: MagazinePistolSubMachineGunUranium
+  category: Ammo
+  completetime: 5
+  materials:
+    Steel: 25
+    Plastic: 225
+    Uranium: 225
+
+- type: latheRecipe
+  id: MagazinePistolSubMachineGunIncendiary
+  result: MagazinePistolSubMachineGunIncendiary
+  category: Ammo
+  completetime: 5
+  materials:
+    Steel: 25
+    Plastic: 400
 
 - type: latheRecipe
   id: MagazinePistolSubMachineGunTopMountedEmpty
@@ -335,6 +419,15 @@
     Steel: 350
     Plastic: 300
 
+- type: latheRecipe #floof
+  id: MagazineUniversalMagnumRubber
+  result: MagazineUniversalMagnumRubber
+  category: Ammo
+  completetime: 5
+  materials:
+    Steel: 400
+    Plastic: 350
+
 - type: latheRecipe
   id: MagazineRifle
   result: MagazineRifle
@@ -343,6 +436,14 @@
   materials:
     Steel: 475
 
+- type: latheRecipe
+  id: MagazineRifleRubber
+  result: MagazineRifleRubber
+  category: Ammo
+  completetime: 5
+  materials:
+    Steel: 150
+    Plastic: 325
 
 - type: latheRecipe
   id: MagazineRiflePractice
@@ -388,13 +489,21 @@
     Steel: 565
 
 - type: latheRecipe
+  id: MagazineLightRifleRubber
+  result: MagazineLightRifleRubber
+  category: Ammo
+  completetime: 5
+  materials:
+    Steel: 125
+    Plastic: 350
+
+- type: latheRecipe
   id: MagazineLightRiflePractice
   result: MagazineLightRiflePractice
   category: Ammo
   completetime: 5
   materials:
     Steel: 205
-
 
 - type: latheRecipe
   id: MagazineLightRifleUranium
@@ -414,6 +523,50 @@
   materials:
     Steel: 25
     Plastic: 540
+
+- type: latheRecipe
+  id: MagazineMagnumEmpty
+  result: MagazineMagnumEmpty
+  category: Ammo
+  completetime: 5
+  materials:
+    Steel: 30
+
+- type: latheRecipe
+  id: MagazineMagnum
+  result: MagazineMagnum
+  category: Ammo
+  completetime: 5
+  materials:
+    Steel: 150
+
+- type: latheRecipe
+  id: MagazineMagnumRubber
+  result: MagazineMagnumRubber
+  category: Ammo
+  completetime: 5
+  materials:
+    Steel: 50
+    Plastic: 100
+
+- type: latheRecipe
+  id: MagazineMagnumUranium
+  result: MagazineMagnumUranium
+  category: Ammo
+  completetime: 5
+  materials:
+    Steel: 30
+    Plastic: 75
+    Uranium: 150
+
+- type: latheRecipe
+  id: MagazineMagnumIncendiary
+  result: MagazineMagnumIncendiary
+  category: Ammo
+  completetime: 5
+  materials:
+    Steel: 30
+    Plastic: 150
 
 - type: latheRecipe
   id: MagazineBoxRifle
@@ -467,14 +620,6 @@
     Plastic: 160
 
 - type: latheRecipe
-  id: SpeedLoaderMagnumEmpty
-  result: SpeedLoaderMagnumEmpty
-  category: Ammo
-  completetime: 5
-  materials:
-    Steel: 50
-
-- type: latheRecipe
   id: MagazineBoxLightRifleRubber
   result: MagazineBoxLightRifleRubber
   category: Ammo
@@ -482,6 +627,14 @@
   materials:
     Steel: 350
     Plastic: 600
+
+- type: latheRecipe
+  id: SpeedLoaderMagnumEmpty
+  result: SpeedLoaderMagnumEmpty
+  category: Ammo
+  completetime: 5
+  materials:
+    Steel: 50
 
 - type: latheRecipe
   id: SpeedLoaderMagnum
@@ -512,6 +665,15 @@
 - type: latheRecipe
   id: SpeedLoaderMagnumIncendiary
   result: SpeedLoaderMagnumIncendiary
+  category: Ammo
+  completetime: 5
+  materials:
+    Steel: 50
+    Plastic: 150
+
+- type: latheRecipe
+  id: SpeedLoaderMagnumRubber
+  result: SpeedLoaderMagnumRubber
   category: Ammo
   completetime: 5
   materials:
@@ -717,6 +879,15 @@
     Uranium: 240
 
 - type: latheRecipe
+  id: WeaponFlareGunSecurity
+  result: WeaponFlareGunSecurity
+  category: Weapons
+  completetime: 6
+  materials:
+    Plastic: 100
+    Steel: 400
+
+- type: latheRecipe
   id: WeaponDisabler
   result: WeaponDisabler
   category: Weapons
@@ -741,46 +912,46 @@
   result: MagazineGrenadeEmpty
   completetime: 3
   materials:
-     Steel: 150
-     Plastic: 50
+    Steel: 150
+    Plastic: 50
 
 - type: latheRecipe
   id: GrenadeEMP
   result: GrenadeEMP
   completetime: 3
   materials:
-     Steel: 150
-     Plastic: 100
-     Glass: 20
+    Steel: 150
+    Plastic: 100
+    Glass: 20
 
 - type: latheRecipe
   id: GrenadeBlast
   result: GrenadeBlast
   completetime: 3
   materials:
-     Steel: 150
-     Plastic: 100
-     Gold: 50
+    Steel: 150
+    Plastic: 100
+    Gold: 50
 
 - type: latheRecipe
   id: GrenadeFlash
   result: GrenadeFlash
   completetime: 3
   materials:
-     Steel: 150
-     Plastic: 100
-     Glass: 20
+    Steel: 150
+    Plastic: 100
+    Glass: 20
 
 - type: latheRecipe
   id: PortableRecharger
   result: PortableRecharger
   completetime: 15
   materials:
-     Steel: 2000
-     Uranium: 2000
-     Plastic: 1000
-     Plasma: 500
-     Glass: 500
+    Steel: 2000
+    Uranium: 2000
+    Plastic: 1000
+    Plasma: 500
+    Glass: 500
 
 - type: latheRecipe
   id: ShellShotgun
@@ -805,6 +976,16 @@
   materials:
     Plastic: 20
     Steel: 5
+
+- type: latheRecipe
+  id: ShellShotgunBeanbag #floof
+  result: ShellShotgunBeanbag
+  category: Ammo
+  completetime: 2
+  materials:
+    Plastic: 20
+    Steel: 5
+
 
 - type: latheRecipe
   id: CartridgeLightRifleIncendiary
@@ -875,8 +1056,12 @@
     Uranium: 10
 
 - type: latheRecipe
-  id: ShadowkinRestraints
-  result: ClothingOuterShadowkinRestraints
-  completetime: 6
+  id: ClothingEyesNightVisionSecurityGoggles
+  result: ClothingEyesNightVisionSecurityGoggles
+  completetime: 5
   materials:
-    Steel: 300
+    Steel: 500
+    Glass: 300
+    Silver: 100
+    Gold: 100
+

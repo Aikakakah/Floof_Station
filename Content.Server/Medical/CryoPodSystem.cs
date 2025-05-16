@@ -29,10 +29,12 @@ using Content.Shared.Examine;
 using Content.Shared.Interaction;
 using Content.Shared.Medical.Cryogenics;
 using Content.Shared.MedicalScanner;
+using Content.Shared.Power;
 using Content.Shared.Verbs;
 using Robust.Server.GameObjects;
 using Robust.Shared.Containers;
 using Robust.Shared.Timing;
+using Robust.Shared.Physics.Components;
 using SharedToolSystem = Content.Shared.Tools.Systems.SharedToolSystem;
 
 namespace Content.Server.Medical;
@@ -149,8 +151,7 @@ public sealed partial class CryoPodSystem : SharedCryoPodSystem
         var doAfterArgs = new DoAfterArgs(EntityManager, args.User, entity.Comp.EntryDelay, new CryoPodDragFinished(), entity, target: args.Dragged, used: entity)
         {
             BreakOnDamage = true,
-            BreakOnTargetMove = true,
-            BreakOnUserMove = true,
+            BreakOnMove = true,
             NeedHand = false,
         };
         _doAfterSystem.TryStartDoAfter(doAfterArgs);
@@ -193,6 +194,7 @@ public sealed partial class CryoPodSystem : SharedCryoPodSystem
         if (!entity.Comp.BodyContainer.ContainedEntity.HasValue)
             return;
 
+        TryComp<PhysicsComponent>(entity.Comp.BodyContainer.ContainedEntity, out var physics); // Floof: Health scanners show body mass
         TryComp<TemperatureComponent>(entity.Comp.BodyContainer.ContainedEntity, out var temp);
         TryComp<BloodstreamComponent>(entity.Comp.BodyContainer.ContainedEntity, out var bloodstream);
 
@@ -206,13 +208,16 @@ public sealed partial class CryoPodSystem : SharedCryoPodSystem
             entity.Owner,
             HealthAnalyzerUiKey.Key,
             new HealthAnalyzerScannedUserMessage(GetNetEntity(entity.Comp.BodyContainer.ContainedEntity),
+            physics?.FixturesMass ?? 0, // Floof: Health scanners show body mass
             temp?.CurrentTemperature ?? 0,
             (bloodstream != null && _solutionContainerSystem.ResolveSolution(entity.Comp.BodyContainer.ContainedEntity.Value,
                 bloodstream.BloodSolutionName, ref bloodstream.BloodSolution, out var bloodSolution))
                 ? bloodSolution.FillFraction
                 : 0,
             null,
-            null
+            null,
+            null,
+            null // Shitmed Change
         ));
     }
 

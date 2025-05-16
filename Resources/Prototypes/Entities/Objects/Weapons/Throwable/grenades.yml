@@ -16,6 +16,7 @@
     - Belt
   - type: OnUseTimerTrigger
     delay: 3.5
+    startOnShoot: true
   - type: Damageable
     damageContainer: Inorganic
   - type: Destructible
@@ -83,7 +84,7 @@
 
 - type: entity
   id: GrenadeFlashEffect
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
     - type: PointLight
       enabled: true
@@ -125,7 +126,7 @@
   description: Go out on your own terms!
   parent: GrenadeBase
   id: SelfDestructSeq
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: ExplodeOnTrigger
   - type: Explosive
@@ -404,6 +405,9 @@
       reagents:
       - ReagentId: SpaceCleaner
         Quantity: 30
+  - type: Tag
+    tags:
+    - Cleanade
 
 - type: entity
   parent: SmokeGrenade

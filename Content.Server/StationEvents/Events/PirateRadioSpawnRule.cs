@@ -6,10 +6,14 @@ using Robust.Shared.Random;
 using Content.Server.GameTicking;
 using Content.Server.StationEvents.Components;
 using Content.Shared.Salvage;
-using Content.Shared.Random.Helpers;
 using System.Linq;
-using Content.Server.GameTicking.Components;
+using Content.Server.Station.Components;
+using Content.Server.Station.Systems;
+using Content.Shared.GameTicking.Components;
 using Content.Shared.CCVar;
+using Content.Shared.Parallax.Biomes;
+using Robust.Shared.Map;
+
 
 namespace Content.Server.StationEvents.Events;
 
@@ -21,25 +25,42 @@ public sealed class PirateRadioSpawnRule : StationEventSystem<PirateRadioSpawnRu
     [Dependency] private readonly IConfigurationManager _confMan = default!;
     [Dependency] private readonly GameTicker _gameTicker = default!;
     [Dependency] private readonly TransformSystem _xform = default!;
+    [Dependency] private readonly StationSystem _stations = default!;
+    [Dependency] private readonly MapSystem _mapSystem = default!;
 
     protected override void Started(EntityUid uid, PirateRadioSpawnRuleComponent component, GameRuleComponent gameRule, GameRuleStartedEvent args)
     {
         base.Started(uid, component, gameRule, args);
 
         var stations = _gameTicker.GetSpawnableStations();
-        if (stations is null || stations.Count <= 0)
+
+        // Remove any station from the list that is on a Planet's surface.
+        foreach (var station in stations.ToList())
+            if (HasComp<BiomeComponent>(Transform(station).MapUid))
+                stations.Remove(station);
+
+        if (stations.Count <= 0)
             return;
 
-        var targetStation = _random.Pick(stations);
-        var randomOffset = _random.NextVector2(component.MinimumDistance, component.MaximumDistance);
+        // Floof - the station's TransformComponent does not actually store the MapID. In fact, it doesn't store anything and remains uninitialized.
+        // To circumvent this issue, we instead use the transform component of the largest grid on the map.
+        var chosenStation = _random.Pick(stations);
+        if (!TryComp<StationDataComponent>(chosenStation, out var stationData)
+            || _stations.GetLargestGrid(stationData) is not { } targetStation)
+            return;
 
+        var targetMapId = Transform(targetStation).MapID;
+        if (!_mapSystem.MapExists(targetMapId))
+            return;
+
+        var randomOffset = _random.NextVector2(component.MinimumDistance, component.MaximumDistance);
         var outpostOptions = new MapLoadOptions
         {
             Offset = _xform.GetWorldPosition(targetStation) + randomOffset,
             LoadMap = false,
         };
 
-        if (!_map.TryLoad(GameTicker.DefaultMap, _random.Pick(component.PirateRadioShuttlePath), out var outpostids, outpostOptions))
+        if (!_map.TryLoad(Transform(targetStation).MapID, _random.Pick(component.PirateRadioShuttlePath), out var outpostids, outpostOptions))
             return;
 
         SpawnDebris(component, outpostids);
@@ -55,6 +76,7 @@ public sealed class PirateRadioSpawnRule : StationEventSystem<PirateRadioSpawnRu
         {
             var outpostaabb = _xform.GetWorldPosition(id);
             var k = 0;
+
             while (k < component.DebrisCount)
             {
                 var debrisRandomOffset = _random.NextVector2(component.MinimumDebrisDistance, component.MaximumDebrisDistance);
@@ -65,7 +87,16 @@ public sealed class PirateRadioSpawnRule : StationEventSystem<PirateRadioSpawnRu
                     LoadMap = false,
                 };
 
-                var salvageProto = _random.Pick(_prototypeManager.EnumeratePrototypes<SalvageMapPrototype>().ToList());
+                var salvPrototypes = _prototypeManager.EnumeratePrototypes<SalvageMapPrototype>().ToList();
+                var salvageProto = _random.Pick(salvPrototypes);
+
+                if (!_mapSystem.MapExists(GameTicker.DefaultMap))
+                    return;
+
+                // Round didn't start before running this, leading to a null-space test fail.
+                if (GameTicker.DefaultMap == MapId.Nullspace)
+                    return;
+
                 if (!_map.TryLoad(GameTicker.DefaultMap, salvageProto.MapPath.ToString(), out _, debrisOptions))
                     return;
 

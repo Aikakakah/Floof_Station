@@ -73,3 +73,11 @@
 - type: font
   id: Cambria
   path: /Fonts/Cambria.ttf
+
+- type: font
+  id: OnlyYou
+  path: /Fonts/Only_You.otf
+  
+- type: font
+  id: RyujinAttack
+  path: /Fonts/RyujinAttack/RyujinAttack.otf

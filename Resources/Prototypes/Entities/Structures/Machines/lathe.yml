@@ -87,7 +87,7 @@
 
 - type: entity
   id: Autolathe
-  parent: BaseLatheLube
+  parent: [BaseLatheLube, BaseMaterialSiloUtilizer]
   name: autolathe
   description: It produces basic items using metal and glass.
   components:
@@ -109,9 +109,9 @@
   - type: MaterialStorage
     whitelist:
       tags:
-        - Sheet
-        - RawMaterial
-        - Ingot
+      - Sheet
+      - RawMaterial
+      - Ingot
   - type: Lathe
     idleState: icon
     runningState: building
@@ -150,6 +150,8 @@
       - ExteriorLightTube
       - LightBulb
       - LedLightBulb
+      - DimLightBulb
+      - WarmLightBulb
       - Bucket
       - DrinkMug
       - DrinkMugMetal
@@ -167,6 +169,7 @@
       - SprayBottle
       - MopItem
       - Holoprojector
+      - HoloprojectorEngineering # Floof
       - Mousetrap
       - LightReplacer
       - TrashBag
@@ -197,34 +200,34 @@
       - HandheldStationMap
       - ClothingHeadHatWelding
       - ShockCollar # FloofStation
-      - CustomDrinkJug # FloofStation
       - LeashBasic # FloofStation
-      - ShortLeash # FloofStation
+      - ClothingEyesHypnoVisor # FloofStation
+      - ToolRadioHandheld # Floofstation
   - type: EmagLatheRecipes
     emagStaticRecipes:
-      - BoxLethalshot
-      - BoxShotgunFlare
-      - BoxShotgunSlug
-      - MagazineBoxLightRifle
-      - MagazineBoxMagnum
-      - MagazineBoxPistol
-      - MagazineBoxRifle
-      - MagazineLightRifle
-      - MagazineLightRifleEmpty
-      - MagazinePistol
-      - MagazinePistolEmpty
-      - MagazinePistolSubMachineGun
-      - MagazinePistolSubMachineGunEmpty
-      - MagazinePistolSubMachineGunTopMounted
-      - MagazinePistolSubMachineGunTopMountedEmpty
-      - MagazineRifle
-      - MagazineRifleEmpty
-      - MagazineShotgun
-      - MagazineShotgunEmpty
-      - MagazineShotgunSlug
-      - RiotShield
-      - SpeedLoaderMagnum
-      - SpeedLoaderMagnumEmpty
+    - BoxLethalshot
+    - BoxShotgunFlare
+    - BoxShotgunSlug
+    - MagazineBoxLightRifle
+    - MagazineBoxMagnum
+    - MagazineBoxPistol
+    - MagazineBoxRifle
+    - MagazineLightRifle
+    - MagazineLightRifleEmpty
+    - MagazinePistol
+    - MagazinePistolEmpty
+    - MagazinePistolSubMachineGun
+    - MagazinePistolSubMachineGunEmpty
+    - MagazinePistolSubMachineGunTopMounted
+    - MagazinePistolSubMachineGunTopMountedEmpty
+    - MagazineRifle
+    - MagazineRifleEmpty
+    - MagazineShotgun
+    - MagazineShotgunEmpty
+    - MagazineShotgunSlug
+    - RiotShield
+    - SpeedLoaderMagnum
+    - SpeedLoaderMagnumEmpty
 
 - type: entity
   id: AutolatheHyperConvection
@@ -239,7 +242,7 @@
 
 - type: entity
   id: Protolathe
-  parent: BaseLatheLube
+  parent: [BaseLatheLube, BaseMaterialSiloUtilizer]
   name: protolathe
   description: Converts raw materials into advanced items.
   components:
@@ -261,9 +264,9 @@
   - type: MaterialStorage
     whitelist:
       tags:
-        - Sheet
-        - RawMaterial
-        - Ingot
+      - Sheet
+      - RawMaterial
+      - Ingot
   - type: Lathe
     idleState: icon
     runningState: building
@@ -271,10 +274,11 @@
     - LargeBeaker
     - Dropper
     - ClothingEyesGlassesChemical
-    - ShadowkinRestraints
+    - ClothingOuterShadowkinRestraints
     dynamicRecipes:
       - PowerDrill
       - MiningDrill
+      - MiningDrillDiamond
       - AnomalyScanner
       - AnomalyLocator
       - AnomalyLocatorWide
@@ -323,6 +327,7 @@
       - SynthesizerInstrument
       - RPED
       - ClothingShoesBootsMagSci
+      - ClothingShoesBootsMoon
       - ClothingShoesBootsSpeed
       - NodeScanner
       - HolofanProjector
@@ -364,55 +369,63 @@
       - AnimalTranslator
       - MofficTranslatorImplanter
       - MofficTranslator
+      - ClothingEyesNightVisionGoggles
+      - ClothingEyesNightVisionDiagnosticGoggles
+      - ClothingEyesThermalVisionGoggles
       - ArachnicTranslatorImplanter # Floofstation
       - ArachnicTranslator # Floofstation
+      - ClothingHarvestBag # Floofstation
       - RCDAmmo #DeltaV
       - RCD #EE
+      # Shitmed Change
+      - EnergyScalpel
+      - EnergyCautery
+      - AdvancedRetractor
   - type: EmagLatheRecipes
     emagDynamicRecipes:
-      - BoxBeanbag
-      - BoxShotgunIncendiary
-      - BoxShotgunUranium
-      - ExplosivePayload
-      - GrenadeBlast
-      - GrenadeEMP
-      - GrenadeFlash
-      - HoloprojectorSecurity
-      - MagazineBoxLightRifleIncendiary
-      - MagazineBoxLightRifleUranium
-      - MagazineBoxMagnumIncendiary
-      - MagazineBoxMagnumUranium
-      - MagazineBoxPistolIncendiary
-      - MagazineBoxPistolUranium
-      - MagazineBoxRifleIncendiary
-      - MagazineBoxRifleUranium
-      - MagazineGrenadeEmpty
-      - MagazineLightRifleIncendiary
-      - MagazineLightRifleUranium
-      - MagazinePistolIncendiary
-      - MagazinePistolUranium
-      - MagazineRifleIncendiary
-      - MagazineRifleUranium
-      - MagazineShotgunBeanbag
-      - MagazineShotgunIncendiary
-      - MagazineShotgunIncendiary
-      - PortableRecharger
-      - PowerCageHigh
-      - PowerCageMedium
-      - PowerCageSmall
-      - ShellTranquilizer
-      - SpeedLoaderMagnumIncendiary
-      - SpeedLoaderMagnumUranium
-      - TelescopicShield
-      - Truncheon
-      - WeaponAdvancedLaser
-      - WeaponLaserCannon
-      - WeaponLaserCarbine
-      - WeaponXrayCannon
-      - WeaponEnergyGun       # DeltaV - Energy Gun
-      - WeaponEnergyGunMini   # DeltaV - Miniature Energy Gun
-      - WeaponEnergyGunPistol # DeltaV - PDW-9 Energy Pistol
-      - WeaponGunLaserCarbineAutomatic # DeltaV - IK-60 Laser Carbine
+    - BoxBeanbag
+    - BoxShotgunIncendiary
+    - BoxShotgunUranium
+    - ExplosivePayload
+    - GrenadeBlast
+    - GrenadeEMP
+    - GrenadeFlash
+    - HoloprojectorSecurity
+    - MagazineBoxLightRifleIncendiary
+    - MagazineBoxLightRifleUranium
+    - MagazineBoxMagnumIncendiary
+    - MagazineBoxMagnumUranium
+    - MagazineBoxPistolIncendiary
+    - MagazineBoxPistolUranium
+    - MagazineBoxRifleIncendiary
+    - MagazineBoxRifleUranium
+    - MagazineGrenadeEmpty
+    - MagazineLightRifleIncendiary
+    - MagazineLightRifleUranium
+    - MagazinePistolIncendiary
+    - MagazinePistolUranium
+    - MagazineRifleIncendiary
+    - MagazineRifleUranium
+    - MagazineShotgunBeanbag
+    - MagazineShotgunIncendiary
+    - MagazineShotgunIncendiary
+    - PortableRecharger
+    - PowerCageHigh
+    - PowerCageMedium
+    - PowerCageSmall
+    - ShellTranquilizer
+    - SpeedLoaderMagnumIncendiary
+    - SpeedLoaderMagnumUranium
+    - TelescopicShield
+    - Truncheon
+    - WeaponAdvancedLaser
+    - WeaponLaserCannon
+    - WeaponLaserCarbine
+    - WeaponXrayCannon
+    - WeaponEnergyGun       # DeltaV - Energy Gun
+    - WeaponEnergyGunMini   # DeltaV - Miniature Energy Gun
+    - WeaponEnergyGunPistol # DeltaV - PDW-9 Energy Pistol
+    - WeaponGunLaserCarbineAutomatic # DeltaV - IK-60 Laser Carbine
 
 - type: entity
   id: ProtolatheHyperConvection
@@ -427,7 +440,7 @@
 
 - type: entity
   id: CircuitImprinter
-  parent: BaseLatheLube
+  parent: [BaseLatheLube, BaseMaterialSiloUtilizer]
   name: circuit imprinter
   description: Prints circuit boards for machines.
   components:
@@ -470,6 +483,7 @@
     - SodaDispenserMachineCircuitboard
     - DeepFryerMachineCircuitboard #Nyano - Summary: adds deep fryer circuit board
     - SpaceHeaterMachineCircuitBoard
+    - StationAnchorCircuitboard
     dynamicRecipes:
       - ThermomachineFreezerMachineCircuitBoard
       - HellfireFreezerMachineCircuitBoard
@@ -494,6 +508,7 @@
       - SolarTrackerElectronics
       - TurboItemRechargerCircuitboard
       - PowerComputerCircuitboard
+      - AlertsComputerCircuitboard
       - AutolatheHyperConvectionMachineCircuitboard
       - ProtolatheHyperConvectionMachineCircuitboard
       - CircuitImprinterHyperConvectionMachineCircuitboard
@@ -552,18 +567,21 @@
       - MetempsychoticMachineCircuitboard
       - SalvageExpeditionsComputerCircuitboard
       - JukeboxCircuitBoard
+      - AutodocCircuitboard # Shitmed Change
+      - OperatingTableCircuitboard # Shitmed Change
+      - MaterialSiloCircuitboard
   - type: EmagLatheRecipes
     emagDynamicRecipes:
-      - ShuttleGunDusterCircuitboard
-      - ShuttleGunFriendshipCircuitboard
-      - ShuttleGunPerforatorCircuitboard
-      - ShuttleGunSvalinnMachineGunCircuitboard
+    - ShuttleGunDusterCircuitboard
+    - ShuttleGunFriendshipCircuitboard
+    - ShuttleGunPerforatorCircuitboard
+    - ShuttleGunSvalinnMachineGunCircuitboard
   - type: MaterialStorage
     whitelist:
       tags:
-        - Sheet
-        - RawMaterial
-        - Ingot
+      - Sheet
+      - RawMaterial
+      - Ingot
   - type: RequireProjectileTarget
 
 - type: entity
@@ -579,7 +597,7 @@
 
 - type: entity
   id: ExosuitFabricator
-  parent: BaseLatheLube
+  parent: [BaseLatheLube, BaseMaterialSiloUtilizer]
   name: exosuit fabricator
   description: Creates parts for robotics and other mechanical needs
   components:
@@ -609,6 +627,7 @@
     - BorgModuleConstruction
     - BorgModuleService
     - BorgModuleTreatment
+    - BorgModuleSurgery
     - BorgModuleCleaning
     - CyborgEndoskeleton
     - LeftArmBorg
@@ -645,6 +664,7 @@
     - RightLegBorgService
     - HeadBorgService
     - TorsoBorgService
+    - Quadborgendoskeleton
     dynamicRecipes:
     - ProximitySensor
     - BorgModuleLightReplacer
@@ -665,6 +685,12 @@
     - BorgModuleDiagnosis
     - BorgModuleDefibrillator
     - BorgModuleAdvancedTreatment
+    - BorgModuleAdvancedSurgery
+    - JawsOfLifeLeftArm
+    - JawsOfLifeRightArm
+    - SpeedLeftLeg
+    - SpeedRightLeg
+    - BasicCyberneticEyes
     - RipleyHarness
     - RipleyLArm
     - RipleyRArm
@@ -684,7 +710,7 @@
     - HamtrLLeg
     - HamtrRLeg
     - VimHarness
-  # Begin Nyano additions
+    # Begin Nyano additions
     - JetpackBlue
     - JetpackMini
   # End Nyano additions
@@ -700,7 +726,7 @@
 
 - type: entity
   id: Biofabricator
-  parent: BaseLathe
+  parent: [BaseLathe, BaseMaterialSiloUtilizer]
   name: biofabricator
   description: Produces animal cubes using biomass.
   components:
@@ -722,8 +748,8 @@
   - type: MaterialStorage
     whitelist:
       tags:
-        - Sheet
-        - RawMaterial
+      - Sheet
+      - RawMaterial
   - type: Lathe
     idleState: icon
     runningState: building
@@ -743,7 +769,7 @@
 
 - type: entity
   id: SecurityTechFab
-  parent: BaseLatheLube
+  parent: [BaseLatheLube, BaseMaterialSiloUtilizer]
   name: security techfab
   description: Prints equipment for use by security crew.
   components:
@@ -787,6 +813,7 @@
       - MagazineBoxPistolPractice
       - MagazineBoxRifle
       - MagazineBoxRiflePractice
+      - MagazineBoxLightRifle
       - MagazineLightRifle
       - MagazineLightRifleEmpty
       - MagazinePistol
@@ -795,6 +822,8 @@
       - MagazinePistolSubMachineGunEmpty
       - MagazinePistolSubMachineGunTopMounted
       - MagazinePistolSubMachineGunTopMountedEmpty
+      - MagazineMagnum
+      - MagazineMagnumEmpty
       - MagazineRifle
       - MagazineRifleEmpty
       - MagazineShotgun
@@ -805,6 +834,7 @@
       - SpeedLoaderMagnumEmpty
       - MagazineMagnumEmpty #floof
       - MagazineMagnum #floof
+      - SterileBag #floof
       - Stunbaton
       - TargetClown
       - ClothingOuterArmorPlateCarrier
@@ -812,16 +842,31 @@
       - TargetHuman
       - TargetSyndicate
       - WeaponDisablerPractice
+      - WeaponFlareGunSecurity
       - WeaponLaserCarbinePractice
       - Zipties
       - ShockCollar
-      - ShadowkinRestraints
+      - BorgModuleStun # Floof (why was this not commented?)
+      - BorgModuleKill # Floof (why was this not commented?)
+      - BorgModuleInvestigation # Floof (why was this not commented?)
+      - ClothingOuterShadowkinRestraints # Floof
       # DeltaV - .38 special ammo - Add various .38 special ammo to security techfab
       - MagazineBoxSpecial
       - MagazineBoxSpecialPractice
       - SpeedLoaderSpecial
       - MagazinePistolSpecial
+      - HandheldGPSBasic # Floof - port to EE
+      - HandheldStationMap # Floof - port to EE
+      - MagazineNovaliteC1Empty
+      - MagazineNovaliteC1
+      - MagazineLightRifleLowCapacityEmpty
+      - MagazineLightRifleLowCapacity
+      - SpeedLoaderRifleHeavy
+      - SpeedLoaderRifleHeavyEmpty
+      - WeaponRifleNovaliteC1
+      - WeaponRifleGestio
     dynamicRecipes:
+      - BolaEnergy
       - BoxBeanbag
       - BoxShotgunIncendiary
       - BoxShotgunUranium
@@ -859,10 +904,19 @@
       - MagazineBoxPistolRubber
       - MagazineBoxRifleRubber
       - MagazineGrenadeEmpty
+      - MagazineLightRifleRubber
       - MagazineLightRifleIncendiary
       - MagazineLightRifleUranium
+      - MagazinePistolRubber
       - MagazinePistolIncendiary
       - MagazinePistolUranium
+      - MagazinePistolSubMachineGunRubber
+      - MagazinePistolSubMachineGunIncendiary
+      - MagazinePistolSubMachineGunUranium
+      - MagazineMagnumRubber
+      - MagazineMagnumIncendiary
+      - MagazineMagnumUranium
+      - MagazineRifleRubber
       - MagazineRifleIncendiary
       - MagazineRifleUranium
       - MagazineShotgunBeanbag
@@ -878,6 +932,7 @@
       - ShuttleGunSvalinnMachineGunCircuitboard
       - Signaller
       - SignalTrigger
+      - SpeedLoaderMagnumRubber
       - SpeedLoaderMagnumIncendiary
       - SpeedLoaderMagnumUranium
       - TelescopicShield
@@ -889,6 +944,7 @@
       - WeaponDisablerSMG
       - WeaponLaserCannon
       - WeaponLaserCarbine
+      - ClothingEyesNightVisionSecurityGoggles
       - ClothingHeadHelmetInsulated # Nyanotrasen - Insulative headgear
       - ClothingHeadCage # Nyanotrasen - Insulative headgear
       - WeaponXrayCannon
@@ -900,22 +956,46 @@
       - CartridgeSpecialIncendiary
       - CartridgeSpecialUranium
       - CartridgeSpecialHoly
+      - ShellShotgunHoly #Floof Holy-Shells
+      - BoxShellHoly #Floof Holy-Shells
       - CartridgeSpecialMindbreaker
+      - BoxShellSoulbreaker #Floofstation DBAJ Making these printable
       - MagazineBoxSpecialRubber
       - MagazineBoxSpecialIncendiary
       - MagazineBoxSpecialUranium
       - MagazineBoxSpecialMindbreaker
-      - ClothingShoesBootsMagCom #Floof
+      - ClothingShoesBootsSecurityMagboots # Floofstation
+      # Floof section - port to EE later
+      #- WeaponEnergyShotgun
+      - SpeedLoaderRifleHeavyIncendiary # Floof - fixes a bug from upstream merge
+      - SpeedLoaderRifleHeavyUranium  # Floof - fixes a bug from upstream merge
+      - WeaponGrapplingGun # Floof
+      - JawsOfLife
+      - HandHeldMassScanner
+      - HoloprojectorField
+      - RadarConsoleCircuitboard
+      - SurveillanceCameraRouterCircuitboard
+      - SurveillanceCameraMonitorCircuitboard
+      - SurveillanceWirelessCameraMonitorCircuitboard
+      - SurveillanceCameraWirelessRouterCircuitboard
+      - MagazineUniversalMagnumRubber
+      - ShellShotgunBeanbag
+      - WeaponHalberd
+      - WeaponEnergyHalberd
+      - ClothingOuterArmorReflective
+      # Floof section end
+      - SecurityCyberneticEyes
+      - MedicalCyberneticEyes
   - type: MaterialStorage
     whitelist:
       tags:
-        - Sheet
-        - RawMaterial
-        - Ingot
+      - Sheet
+      - RawMaterial
+      - Ingot
 
 - type: entity
   id: AmmoTechFab
-  parent: BaseLatheLube
+  parent: [BaseLatheLube, BaseMaterialSiloUtilizer]
   name: ammo techfab
   description: Prints the bare minimum of bullets that any budget military or armory could need. Nothing fancy.
   components:
@@ -951,12 +1031,16 @@
         - MagazinePistolEmpty
         - MagazineRifle
         - MagazineRifleEmpty
+        - MagazineNovaliteC1
+        - MagazineNovaliteC1Empty
         - MagazineShotgun
         - MagazineShotgunEmpty
         - MagazineShotgunSlug
         - ShellTranquilizer
         - SpeedLoaderMagnum
         - SpeedLoaderMagnumEmpty
+        - SpeedLoaderRifleHeavy
+        - SpeedLoaderRifleHeavyEmpty
         - CartridgeSpecial
         - MagazineBoxSpecial
     - type: MaterialStorage
@@ -968,7 +1052,7 @@
 
 - type: entity
   id: MedicalTechFab
-  parent: BaseLatheLube
+  parent: [BaseLatheLube, BaseMaterialSiloUtilizer]
   name: medical techfab
   description: Prints equipment for use by the medbay.
   components:
@@ -1026,7 +1110,13 @@
       - Saw
       - Hemostat
       - ClothingEyesGlassesChemical
-      - WhiteCane
+      - BoneGel # Shitmed Change
+      - WhiteCane # Floof
+      - HandheldGPSBasic # Floof - port to EE
+      - HandheldStationMap # Floof - port to EE
+      - SterileBag # floof
+      - BaseChemistryEmptyVial #floof
+      - AACTablet # DeltaV
     dynamicRecipes:
       - ChemicalPayload
       - CryostasisBeaker
@@ -1035,14 +1125,253 @@
       - ClothingEyesHudMedical # Nyano
       - ChemicalPayload # Nyano
       - SyringeCryostasis
+      - ClothingEyesNightVisionMedicalGoggles
       - HypoMini # Floof
+      # Floof section - port to EE later
+      - HandHeldMassScanner
+      - ClothingHeadHelmetInsulated
+      - CloningConsoleComputerCircuitboard
+      - CloningPodMachineCircuitboard
+      - MetempsychoticMachineCircuitboard
+      - MedicalScannerMachineCircuitboard
+      - VaccinatorMachineCircuitboard
+      - DiagnoserMachineCircuitboard
+      - StasisBedMachineCircuitboard
+      - CryoPodMachineCircuitboard
+      - BiomassReclaimerMachineCircuitboard
+      - BiofabricatorMachineCircuitboard
+      - ReagentGrinderIndustrialMachineCircuitboard
+      - FatExtractorMachineCircuitboard
+      - CrewMonitoringComputerCircuitboard
+      # Floof section end
+      # Shitmed Change
+      - EnergyScalpel
+      - EnergyCautery
+      - AdvancedRetractor
+      - OmnimedTool
+      - MedicalCyberneticEyes
   - type: Machine
     board: MedicalTechFabCircuitboard
   - type: StealTarget
     stealGroup: MedicalTechFabCircuitboard
 
+# THIS ENTIRE SECTION BELONGS TO FLOOF - port to EE if possible
+# ===
+
 - type: entity
-  parent: BaseLathe
+  id: EngineeringTechFab
+  parent: Autolathe
+  name: engineering techfab
+  description: An improved version of the autolathe, capable of printing various tools used by engineers.
+  components:
+  - type: Sprite
+    sprite: Structures/Machines/techfab.rsi
+    layers:
+    - state: icon
+      map: ["enum.LatheVisualLayers.IsRunning"]
+    - state: engi
+    - state: unlit
+      shader: unshaded
+      map: ["enum.PowerDeviceVisualLayers.Powered"]
+    - state: inserting
+      map: ["enum.MaterialStorageVisualLayers.Inserting"]
+    - state: panel
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  - type: Machine
+    board: EngineeringTechFabCircuitboard
+  - type: Lathe
+    idleState: icon
+    runningState: icon
+    # Static recipes are inherited from the autolathe. See LatheComponent.
+    staticRecipes:
+      - HarnessSafety # FloofStation
+    dynamicRecipes:
+      # Machines and computers
+      - TurboItemRechargerCircuitboard
+      - SheetifierMachineCircuitboard
+      - PortableGeneratorPacmanMachineCircuitboard
+      - PortableGeneratorSuperPacmanMachineCircuitboard
+      - PortableGeneratorJrPacmanMachineCircuitboard
+      - AutolatheHyperConvectionMachineCircuitboard
+      - SolarControlComputerCircuitboard
+      - SolarTrackerElectronics # Actual solar panels are not manufacturable
+      - EmitterCircuitboard
+      # Atmos machines
+      - ThermomachineFreezerMachineCircuitBoard
+      - HellfireFreezerMachineCircuitBoard
+      - PortableScrubberMachineCircuitBoard
+      # Tools
+      - PowerCellHigh
+      - PowerCellMicroreactor
+      - SignallerAdvanced
+      - HolofanProjector
+      - HoloprojectorField
+      - WelderExperimental
+      - PowerDrill # Can make two of the three advanced tools - jaws of life are too OP to give them away
+      - WeaponParticleDecelerator
+      - ClothingMaskWeldingGas
+      - ClothingShoesBootsMagSci
+      # Routers and monitors
+      - PowerComputerCircuitboard
+      - AlertsComputerCircuitboard
+      - SurveillanceCameraRouterCircuitboard
+      - SurveillanceCameraMonitorCircuitboard
+      - SurveillanceWirelessCameraMonitorCircuitboard
+      - SurveillanceCameraWirelessRouterCircuitboard
+      - TelecomServerCircuitboard
+      # Shuttle building
+      - ShuttleConsoleCircuitboard
+      - RadarConsoleCircuitboard
+      - ThrusterMachineCircuitboard
+      - GyroscopeMachineCircuitboard
+      - MiniGravityGeneratorCircuitboard
+      - ShuttleGunKineticCircuitboard
+  - type: MaterialStorage
+    whitelist:
+      tags:
+      - Sheet
+      - RawMaterial
+      - Ingot
+
+
+- type: entity
+  id: CargoTechFab
+  parent: Autolathe
+  name: logistics techfab
+  description: An improved version of the autolathe, capable of printing various tools used by salvage and cargo technicians.
+  components:
+  - type: Sprite
+    sprite: Structures/Machines/techfab.rsi
+    layers:
+    - state: icon
+      map: ["enum.LatheVisualLayers.IsRunning"]
+    - state: cargo
+    - state: unlit
+      shader: unshaded
+      map: ["enum.PowerDeviceVisualLayers.Powered"]
+    - state: inserting
+      map: ["enum.MaterialStorageVisualLayers.Inserting"]
+    - state: panel
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  - type: Machine
+    board: CargoTechFabCircuitboard
+  - type: Lathe
+    idleState: icon
+    runningState: icon
+    # Static recipes are inherited from the autolathe. See LatheComponent.
+    dynamicRecipes:
+    # Weapons and tools
+    - WeaponGrapplingGun
+    - WeaponTetherGun
+    - WeaponForceGun
+    - WeaponProtoKineticAccelerator
+    - MiningDrill
+    - HandHeldMassScanner
+    # Shuttle building
+    - ShuttleConsoleCircuitboard
+    - RadarConsoleCircuitboard
+    - ThrusterMachineCircuitboard
+    - GyroscopeMachineCircuitboard
+    - MiniGravityGeneratorCircuitboard
+    - ShuttleGunKineticCircuitboard
+    # Machines and computers
+    - CargoTelepadMachineCircuitboard
+    - OreProcessorMachineCircuitboard
+    # NOTE: advanced tools, industrial ore processor, expeds board are not added here as those are the very few things epi provides for cargo
+  - type: MaterialStorage
+    whitelist:
+      tags:
+      - Sheet
+      - RawMaterial
+      - Ingot
+
+
+- type: entity
+  id: ServiceTechFab
+  parent: BaseLatheLube
+  name: service techfab
+  description: A specialized techfab used for printing various quality-of-life tools.
+  components:
+  - type: Sprite
+    sprite: Structures/Machines/techfab.rsi
+    layers:
+    - state: icon
+      map: ["enum.LatheVisualLayers.IsRunning"]
+    - state: service
+    - state: unlit
+      shader: unshaded
+      map: ["enum.PowerDeviceVisualLayers.Powered"]
+    - state: inserting
+      map: ["enum.MaterialStorageVisualLayers.Inserting"]
+    - state: panel
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  - type: Machine
+    board: ServiceTechFabCircuitboard
+  - type: Lathe
+    idleState: icon
+    runningState: icon
+    staticRecipes:
+    - HandheldStationMap
+    - ShockCollar
+    - CustomDrinkJug
+    - LeashBasic
+    - CellRechargerCircuitboard
+    - WeaponCapacitorRechargerCircuitboard
+    - Beaker
+    - LargeBeaker
+    - Syringe
+    - HandLabeler
+    - Signaller
+    - SprayBottle
+    - MopItem
+    - Bucket
+    - Holoprojector
+    dynamicRecipes:
+    # Tools
+    - ClothingShoesBootsSpeed
+    - BluespaceBeaker
+    - AdvMopItem
+    - WeaponSprayNozzle
+    - ClothingBackpackWaterTank
+    - MegaSprayBottle
+    # Machines and computers
+    - SeedExtractorMachineCircuitboard
+    - HydroponicsTrayMachineCircuitboard
+    - ReagentGrinderIndustrialMachineCircuitboard
+    - ComputerTelevisionCircuitboard
+    - SynthesizerInstrument
+    - DawInstrumentMachineCircuitboard
+    - MassMediaCircuitboard
+    - JukeboxCircuitBoard
+    - FatExtractorMachineCircuitboard
+    # Translators
+    - CanilunztTranslator
+    - BubblishTranslator
+    - NekomimeticTranslator
+    - DraconicTranslator
+    - SolCommonTranslator
+    - RootSpeakTranslator
+    - BasicGalaticCommonTranslatorImplanter
+    - MofficTranslator
+    - ArachnicTranslator
+    # Tiles
+    - FauxTileAstroGrass
+    - FauxTileMowedAstroGrass
+    - FauxTileJungleAstroGrass
+    - FauxTileAstroIce
+    - FauxTileAstroSnow
+  - type: MaterialStorage
+    whitelist:
+      tags:
+      - Sheet
+      - RawMaterial
+      - Ingot
+
+# ===
+# Floof section end
+
+- type: entity
+  parent: [BaseLathe, BaseMaterialSiloUtilizer]
   id: UniformPrinter
   name: uniform printer
   description: Prints new or replacement uniforms.
@@ -1064,6 +1393,9 @@
     staticRecipes:
       - ClothingUniformJumpsuitColorGrey
       - ClothingUniformJumpskirtColorGrey
+      - ClothingUniformJumpsuitAtmos # Floof
+      - ClothingUniformJumpskirtAtmos # Floof
+      - ClothingUniformJumpsuitAtmosCasual # Floof
       - ClothingUniformJumpsuitBartender
       - ClothingUniformJumpskirtBartender
       - ClothingHeadHatCapcap
@@ -1090,6 +1422,8 @@
       - ClothingHeadHatBeretCmo
       - ClothingUniformJumpsuitCMO
       - ClothingUniformJumpskirtCMO
+      - ClothingUniformJumpsuitCMOTurtle
+      - ClothingUniformJumpskirtCMOTurtle
       - ClothingUniformJumpsuitDetective
       - ClothingUniformJumpskirtDetective
       - ClothingUniformJumpsuitEngineering
@@ -1150,6 +1484,9 @@
       - ClothingHeadHatBeretRND
       - ClothingUniformJumpsuitResearchDirector
       - ClothingUniformJumpskirtResearchDirector
+      - ClothingUniformJumpsuitRoboticist # Floof
+      - ClothingUniformJumpskirtRoboticist # Floof
+      - ClothingOuterRoboOveralls # Floof
       - ClothingUniformJumpsuitScientist
       - ClothingUniformJumpskirtScientist
       - ClothingUniformJumpsuitSeniorResearcher
@@ -1233,6 +1570,7 @@
       - CarpetPurple
       - CarpetCyan
       - CarpetWhite
+      # Floofstation section start
       # Floofstation - Collars
       - ClothingNeckCollarCmd
       # Floofstation - Socks, Armwarmers ect
@@ -1267,27 +1605,70 @@
       - ClothingHandsEngiWarmers
       - ClothingUnderSocksEngi
       - ClothingUniformEngiThong
+      - ClothingHandsChiefEngiWarmers
+      - ClothingUnderSocksChiefEngi
+      - ClothingUniformChiefEngiThong
       - ClothingHandsEpiWarmers
       - ClothingUnderSocksEpi
       - ClothingUniformEpiThong
       - ClothingHandsChaplainWarmers
       - ClothingUnderSocksChaplain
       - ClothingUniformChaplainThong
+      - ClothingHandsEpiHeadWarmers
+      - ClothingUnderSocksEpiHead
+      - ClothingUniformEpiHeadThong
+      - ClothingHandsMantisEpiWarmers
+      - ClothingUnderSocksMantisEpi
+      - ClothingUniformMantisEpiThong
       - ClothingHandsLogisWarmers
       - ClothingUnderSocksLogis
       - ClothingUniformLogisThong
+      - ClothingHandsLOLogisWarmers
+      - ClothingUnderSocksLOLogis
+      - ClothingUniformLOLogisThong
+      - ClothingHandsCourierWarmers
+      - ClothingUnderSocksCourier
+      - ClothingUniformCourierThong
       - ClothingHandsMedicWarmers
       - ClothingUnderSocksMedic
       - ClothingUniformMedicThong
+      - ClothingHandsChemistsWarmers
+      - ClothingUnderSocksChemists
+      - ClothingUniformChemistsThong
+      - ClothingHandsParaMedicWarmers
+      - ClothingUnderSocksParaMedic
+      - ClothingUniformParaMedicThong
+      - ClothingHandsCMOWarmers
+      - ClothingUnderSocksCMO
+      - ClothingUniformCMOThong
       - ClothingHandsSecurityWarmers
       - ClothingUnderSocksSecurity
       - ClothingUniformSecurityThong
+      - ClothingHandsHeadSecurityWarmers
+      - ClothingUnderSocksHeadSecurity
+      - ClothingUniformHeadSecurityThong
+      - ClothingHandsDetectiveWarmers
+      - ClothingUnderSocksDetective
+      - ClothingUniformDetectiveThong
+      - ClothingHandsCorpsmanWarmers
+      - ClothingUnderSocksCorpsman
+      - ClothingUniformCorpsmanThong
       - ClothingHandsServiceWarmers
       - ClothingUnderSocksService
       - ClothingUniformServiceThong
       - ClothingHandsJanitorWarmers
       - ClothingUnderSocksJanitor
       - ClothingUniformJanitorThong
+      - ClothingHandsBartenderWarmers
+      - ClothingUnderSocksBartender
+      - ClothingUniformBartenderThong
+      - ClothingHandsMusicianWarmers
+      - ClothingUnderSocksMusician
+      - ClothingUniformMusicianThong
+      - ClothingHandsChefWarmers
+      - ClothingUnderSocksChef
+      - ClothingUniformChefThong
+      # Floofstation section end
   - type: EmagLatheRecipes
     emagStaticRecipes:
       - ClothingHeadHatCentcomcap
@@ -1312,57 +1693,64 @@
       - ClothingOuterWinterCentcom
       - ClothingOuterWinterSyndie
       - ClothingOuterWinterSyndieCap
+      # Floofstation - Department Socks, Armwarmers ect
+      - ClothingUniformSurgeonGerneralThong
   - type: MaterialStorage
     whitelist:
       tags:
-        - Sheet
-        - RawMaterial
-        - Ingot
+      - Sheet
+      - RawMaterial
+      - Ingot
 
 - type: entity
-  parent: BaseLathe
+  parent: [BaseLathe, BaseMaterialSiloUtilizer]
   id: OreProcessor
   name: ore processor
   description: It produces sheets and ingots using ores.
   components:
-    - type: Sprite
-      sprite: Structures/Machines/ore_processor.rsi
-      layers:
-        - state: icon
-          map: ["enum.LatheVisualLayers.IsRunning"]
-        - state: unlit
-          shader: unshaded
-          map: ["enum.PowerDeviceVisualLayers.Powered"]
-        - state: inserting
-          map: ["enum.MaterialStorageVisualLayers.Inserting"]
-        - state: panel
-          map: ["enum.WiresVisualLayers.MaintenancePanel"]
-    - type: Machine
-      board: OreProcessorMachineCircuitboard
-    - type: MaterialStorage
-      ignoreColor: true
-      whitelist:
-        tags:
-          - Ore
-    - type: Lathe
-      idleState: icon
-      runningState: building
-      staticRecipes:
-        - BluespaceCrystal
-        - NormalityCrystal
-        - SheetSteel30
-        - SheetGlass30
-        - SheetRGlass30
-        - SheetPlasma30
-        - SheetPGlass30
-        - SheetRPGlass30
-        - SheetUranium30
-        - IngotGold30
-        - IngotSilver30
-        - MaterialBananium10
-    - type: MaterialStorageMagnetPickup # Delta V - Summary: Adds magnet pull from Frontier
-      magnetEnabled: True
-      range: 0.30 # Delta V - End Magnet Pull
+  - type: Sprite
+    sprite: Structures/Machines/ore_processor.rsi
+    layers:
+    - state: icon
+      map: ["enum.LatheVisualLayers.IsRunning"]
+    - state: unlit
+      shader: unshaded
+      map: ["enum.PowerDeviceVisualLayers.Powered"]
+    - state: inserting
+      map: ["enum.MaterialStorageVisualLayers.Inserting"]
+    - state: panel
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  - type: Machine
+    board: OreProcessorMachineCircuitboard
+  - type: MaterialStorage
+    ignoreColor: true
+    whitelist:
+      tags:
+      - Ore
+  - type: Lathe
+    idleState: icon
+    runningState: building
+    defaultProductionAmount: 10
+    staticRecipes:
+    - BluespaceCrystal
+    - NormalityCrystal
+    - SheetSteel
+    - SheetGlass1
+    - SheetRGlass
+    - SheetPlasma1
+    - SheetPGlass1
+    - SheetRPGlass1
+    - SheetUranium1
+    - IngotGold1
+    - IngotSilver1
+    - MaterialBananium1
+  - type: MaterialStorageMagnetPickup # Delta V - Summary: Adds magnet pull from Frontier
+    magnetEnabled: True
+    range: 0.30 # Delta V - End Magnet Pull
+  - type: MiningPoints # DeltaV - Source of mining points for miners
+    transferSound:
+      path: /Audio/Effects/Cargo/ping.ogg
+  - type: MiningPointsLathe # DeltaV
 
 - type: entity
   parent: OreProcessor
@@ -1378,24 +1766,25 @@
     materialUseMultiplier: 0.75
     timeMultiplier: 0.5
     staticRecipes:
-      - BluespaceCrystal
-      - NormalityCrystal
-      - SheetSteel30
-      - SheetGlass30
-      - SheetRGlass30
-      - SheetPlasma30
-      - SheetPGlass30
-      - SheetRPGlass30
-      - SheetPlasteel30
-      - SheetUranium30
-      - SheetUGlass30
-      - SheetRUGlass30
-      - IngotGold30
-      - IngotSilver30
-      - MaterialBananium10
+    - BluespaceCrystal
+    - NormalityCrystal
+    - SheetSteel
+    - SheetGlass1
+    - SheetRGlass
+    - SheetPlasma1
+    - SheetPGlass1
+    - SheetRPGlass1
+    - SheetPlasteel1
+    - SheetUranium1
+    - SheetUGlass1
+    - SheetRUGlass1
+    - IngotGold1
+    - IngotSilver1
+    - MaterialBananium1
+    - MaterialDiamond
 
 - type: entity
-  parent: BaseLathe
+  parent: [BaseLathe, BaseMaterialSiloUtilizer]
   id: Sheetifier
   name: sheet-meister 2000
   description: A very sheety machine.
@@ -1426,7 +1815,7 @@
     - SheetPaper
 
 - type: entity
-  parent: BaseLathe
+  parent: [BaseLathe, BaseMaterialSiloUtilizer]
   id: PrizeCounter
   name: prize counter
   description: Claim your prize and win some toys and cute plushies!
@@ -1540,6 +1929,31 @@
       - CrazyGlue
       - PlushieRatvar
       - PlushieNar
+      #Floof Plushies - Start
+      #HypnoTemp Plushies - Start
+      - PlushieHypnoTempCap
+      - PlushieHypnoTempCMO
+      - PlushieHypnoTempHoP
+      - PlushieHypnoTempHoS
+      - PlushieHypnoTempCE
+      - PlushieHypnoTempLO
+      - PlushieHypnoTempMysta
+      #HypnoTemp Plushies - End
+      - PlushieTrystan
+      - PlushieCentCom
+      - PlushieSlimeTider
+      - PlushieChillHuman
+      - PlushieFRavager
+      - PlushieFPraetorian
+      - PlushieFDrone
+      - PlushieFRouny
+      # - Plushiegirlfailure
+      - PlushieKitsuneCaptain
+      - PlushieSapphicHarpyPlushie
+      # - PlushieFeistyBartender
+      # - PlushieCoolVulp
+      # - PlushieNoticeableSecurityOfficer
+      #Floof Plushies - End
   - type: EmagLatheRecipes
     emagStaticRecipes:
       - PlushieGhost
@@ -1562,4 +1976,51 @@
   - type: MaterialStorage
     whitelist:
       tags:
-        - PrizeTicket
+      - PrizeTicket
+
+- type: entity
+  id: MedicalBiofabricator
+  parent: [BaseLathe, BaseMaterialSiloUtilizer]
+  name: medical biofabricator
+  description: Produces organs and other organic matter that can be surgically grafted onto patients with biomass.
+  components:
+  - type: Sprite
+    sprite: _Shitmed/Structures/Machines/limbgrower.rsi
+    snapCardinals: true
+    layers:
+    - state: limbgrower_idleoff
+      map: ["enum.LatheVisualLayers.IsRunning"]
+  #    - state: limbgrower_idleoff
+  #      shader: unshaded
+  #      map: ["enum.PowerDeviceVisualLayers.Powered"]
+  #    - state: inserting
+  #      map: ["enum.MaterialStorageVisualLayers.Inserting"]
+  #    - state: panel
+  #      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  - type: Machine
+    board: MedicalBiofabMachineBoard
+  - type: MaterialStorage
+    whitelist:
+      tags:
+      - Sheet
+      - RawMaterial
+  - type: Lathe
+    idleState: limbgrower_idleoff
+    runningState: limbgrower_idleon
+    staticRecipes:
+    - SynthLiver
+    - SynthHeart
+    - SynthLungs
+    - SynthEyes
+    - SynthLeftLeg
+    - SynthRightLeg
+    - SynthLeftFoot
+    - SynthRightFoot
+    - SynthLeftArm
+    - SynthRightArm
+    - SynthLeftHand
+    - SynthRightHand
+  - type: EmagLatheRecipes
+    emagStaticRecipes:
+    - PizzaLeftArm
+    - PizzaRightArm

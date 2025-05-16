@@ -18,12 +18,17 @@
 - type: speciesBaseSprites
   id: MobArachnidSprites
   sprites:
+    TailBehind: MobHumanoidAnyMarking
+    TailOversuit: MobHumanoidAnyMarking
     Head: MobArachnidHead
     Snout: MobHumanoidAnyMarking
     Chest: MobArachnidTorso
+    Underwear: MobHumanoidAnyMarking # Floof, add underwear
+    Undershirt: MobHumanoidAnyMarking # Floof, add underwear
     HeadTop: MobHumanoidAnyMarking
     HeadSide: MobHumanoidAnyMarking
     Tail: MobHumanoidAnyMarking
+    Wings: MobHumanoidAnyMarking
     Eyes: MobArachnidEyes
     LArm: MobArachnidLArm
     RArm: MobArachnidRArm
@@ -44,6 +49,12 @@
   id: MobArachnidMarkingLimits
   onlyWhitelisted: true
   points:
+    Underwear:
+      points: 2 # FLOOF CHANGE
+      required: false # Floof, add underwear
+    Undershirt:
+      points: 2 # FLOOF CHANGE
+      required: false # Floof, add underwear
     Hair:
       points: 0
       required: false
@@ -54,11 +65,14 @@
       points: 1
       required: true
       defaultMarkings: [ ArachnidAppendagesDefault ]
+    Wings:
+      points: 1
+      required: false
     HeadTop:
       points: 1
       required: false
     HeadSide:
-      points: 1
+      points: 3
       required: true
       defaultMarkings: [ ArachnidCheliceraeDownwards ]
     Chest:
@@ -80,13 +94,13 @@
       points: 2
       required: false
     RightHand:
-      points: 2
+      points: 3
       required: false
     LeftArm:
       points: 2
       required: false
     LeftHand:
-      points: 2
+      points: 3
       required: false
 
 - type: humanoidBaseSprite

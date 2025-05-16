@@ -23,6 +23,7 @@ using Content.Shared.ActionBlocker;
 using Content.Shared.Inventory.VirtualItem;
 using Content.Shared.Item;
 using Content.Shared.Throwing;
+using Content.Shared.Mind.Components;
 using Content.Shared.Movement.Pulling.Components;
 using Content.Shared.Movement.Pulling.Events;
 using Content.Shared.Movement.Pulling.Systems;
@@ -32,6 +33,8 @@ using Content.Shared.Storage;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Physics.Components;
 using Robust.Server.GameObjects;
+using System.Numerics;
+using Content.Shared._DV.Polymorph;
 
 namespace Content.Server.Carrying
 {
@@ -60,6 +63,7 @@ namespace Content.Server.Carrying
             SubscribeLocalEvent<CarryingComponent, BeforeThrowEvent>(OnThrow);
             SubscribeLocalEvent<CarryingComponent, EntParentChangedMessage>(OnParentChanged);
             SubscribeLocalEvent<CarryingComponent, MobStateChangedEvent>(OnMobStateChanged);
+            SubscribeLocalEvent<CarryingComponent, BeforePolymorphedEvent>(OnBeforePolymorphed);
             SubscribeLocalEvent<BeingCarriedComponent, InteractionAttemptEvent>(OnInteractionAttempt);
             SubscribeLocalEvent<BeingCarriedComponent, MoveInputEvent>(OnMoveInput);
             SubscribeLocalEvent<BeingCarriedComponent, UpdateCanMoveEvent>(OnMoveAttempt);
@@ -67,7 +71,7 @@ namespace Content.Server.Carrying
             SubscribeLocalEvent<BeingCarriedComponent, GettingInteractedWithAttemptEvent>(OnInteractedWith);
             SubscribeLocalEvent<BeingCarriedComponent, PullAttemptEvent>(OnPullAttempt);
             SubscribeLocalEvent<BeingCarriedComponent, StartClimbEvent>(OnStartClimb);
-            SubscribeLocalEvent<BeingCarriedComponent, BuckleChangeEvent>(OnBuckleChange);
+            SubscribeLocalEvent<BeingCarriedComponent, BuckledEvent>(OnBuckled);
             SubscribeLocalEvent<CarriableComponent, CarryDoAfterEvent>(OnDoAfter);
         }
 
@@ -139,7 +143,7 @@ namespace Content.Server.Carrying
 
             args.ItemUid = virtItem.BlockingEntity;
 
-            args.ThrowStrength *= _contests.MassContest(uid, virtItem.BlockingEntity, false, 2f)
+            args.ThrowSpeed *= _contests.MassContest(uid, virtItem.BlockingEntity, false, 2f)
                             * _contests.StaminaContest(uid, virtItem.BlockingEntity);
         }
 
@@ -157,18 +161,30 @@ namespace Content.Server.Carrying
             DropCarried(uid, component.Carried);
         }
 
+        private void OnBeforePolymorphed(Entity<CarryingComponent> ent, ref BeforePolymorphedEvent args)
+        {
+            if (HasComp<MindContainerComponent>(ent.Comp.Carried))
+                DropCarried(ent, ent.Comp.Carried);
+        }
+
         /// <summary>
         /// Only let the person being carried interact with their carrier and things on their person.
         /// </summary>
         private void OnInteractionAttempt(EntityUid uid, BeingCarriedComponent component, InteractionAttemptEvent args)
         {
-            if (args.Target == null)
+            // Floofstation - function body reviewed
+            Predicate<TransformComponent> isChildOfCarrier = null!; // C# doesn't have local functions eugh
+            isChildOfCarrier = (childXForm) => childXForm.ParentUid == component.Carrier
+                             || (childXForm.ParentUid is {Valid: true} parent && isChildOfCarrier(Transform(parent)));
+
+            if (args.Target == null // Allow self-interacts
+                || isChildOfCarrier(Transform(args.Target.Value))) // Allow interacting with everything on the carriee
                 return;
 
+            // Also check if the interacted-with entity is on the carrier and cancel the event if not
             var targetParent = Transform(args.Target.Value).ParentUid;
-
             if (args.Target.Value != component.Carrier && targetParent != component.Carrier && targetParent != uid)
-                args.Cancel();
+                args.Cancelled = true;
         }
 
         /// <summary>
@@ -201,8 +217,9 @@ namespace Content.Server.Carrying
 
         private void OnInteractedWith(EntityUid uid, BeingCarriedComponent component, GettingInteractedWithAttemptEvent args)
         {
-            if (args.Uid != component.Carrier)
-                args.Cancel();
+            // Floofstation - why.
+            // if (args.Uid != component.Carrier)
+            //     args.Cancel();
         }
 
         private void OnPullAttempt(EntityUid uid, BeingCarriedComponent component, PullAttemptEvent args)
@@ -215,7 +232,7 @@ namespace Content.Server.Carrying
             DropCarried(component.Carrier, uid);
         }
 
-        private void OnBuckleChange(EntityUid uid, BeingCarriedComponent component, ref BuckleChangeEvent args)
+        private void OnBuckled(EntityUid uid, BeingCarriedComponent component, ref BuckledEvent args)
         {
             DropCarried(component.Carrier, uid);
         }
@@ -230,7 +247,8 @@ namespace Content.Server.Carrying
             Carry(args.Args.User, uid);
             args.Handled = true;
         }
-        private void StartCarryDoAfter(EntityUid carrier, EntityUid carried, CarriableComponent component)
+
+        public void StartCarryDoAfter(EntityUid carrier, EntityUid carried, CarriableComponent component)
         {
             if (!TryComp<PhysicsComponent>(carrier, out var carrierPhysics)
                 || !TryComp<PhysicsComponent>(carried, out var carriedPhysics)
@@ -250,8 +268,7 @@ namespace Content.Server.Carrying
             var ev = new CarryDoAfterEvent();
             var args = new DoAfterArgs(EntityManager, carrier, length, ev, carried, target: carried)
             {
-                BreakOnTargetMove = true,
-                BreakOnUserMove = true,
+                BreakOnMove = true,
                 NeedHand = true
             };
 
@@ -266,16 +283,17 @@ namespace Content.Server.Carrying
             if (TryComp<PullableComponent>(carried, out var pullable))
                 _pullingSystem.TryStopPull(carried, pullable);
 
+            EnsureComp<KnockedDownComponent>(carried); // Floof - moved this statement up because some systems can break carrying in response to knockdown
             _transform.AttachToGridOrMap(carrier);
             _transform.AttachToGridOrMap(carried);
             _transform.SetCoordinates(carried, Transform(carrier).Coordinates);
             _transform.SetParent(carried, carrier);
             _virtualItemSystem.TrySpawnVirtualItemInHand(carried, carrier);
-            _virtualItemSystem.TrySpawnVirtualItemInHand(carried, carrier);
+            if (TryComp<CarriableComponent>(carried, out var carriableComp) && (carriableComp.FreeHandsRequired > 1)) // Floofstation
+                _virtualItemSystem.TrySpawnVirtualItemInHand(carried, carrier);
             var carryingComp = EnsureComp<CarryingComponent>(carrier);
             ApplyCarrySlowdown(carrier, carried);
             var carriedComp = EnsureComp<BeingCarriedComponent>(carried);
-            EnsureComp<KnockedDownComponent>(carried);
 
             carryingComp.Carried = carried;
             carriedComp.Carrier = carrier;
