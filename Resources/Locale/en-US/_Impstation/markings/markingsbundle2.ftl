@@ -40,6 +40,7 @@ marking-BadMoltRArm = Scar (Bad Molt R)
 marking-BadMoltRArm-badmoltrarm = Scar (Bad Molt R)
 marking-TailDropped = Dropped Tail
 marking-TailDropped-tail_dropped = Dropped Tail
+marking-TailGeckoSpots = Gecko Tail
 marking-TailGeckoSpots-tail_gecko1 = Gecko Tail
 marking-TailGeckoSpots-tail_gecko2 = Spots
 marking-TailSnailLizard = Snail Shell
