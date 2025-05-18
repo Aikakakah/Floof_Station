@@ -1,0 +1,11 @@
+- type: marking
+  id: WingsRoboticMerciful
+  bodyPart: Wings
+  markingCategory: Wings
+  speciesRestriction: [Reptilian, SlimePerson, IPC, Rodentia, Vulpkanin, Felinid, Human, Oni]
+  sprites:
+    - sprite: _Goobstation/Mobs/Customization/IPCwings.rsi
+      state: merciful_base
+    - sprite: _Goobstation/Mobs/Customization/IPCwings.rsi
+      state: merciful_light
+

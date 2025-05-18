@@ -64,7 +64,7 @@
       required: false
     #FLOOF CHANGE IPCs get furry parts (reorgalized too)
     Head:
-      points: 3 # FLOOF CHANGE: IPCs get furry parts
+      points: 6 # FLOOF CHANGE: IPCs get furry parts
       required: false # FLOOF CHANGE: IPCs get furry parts
       defaultMarkings: [ MobIPCHeadDefault ]
     HeadSide:
